@@ -1,0 +1,164 @@
+/*original stylesheet from
+       http://insitu.lri.fr/~blanch/publications/chi2004/chi2004-sp.html
+       by Renaud Blanch              */
+/*minor modifications by Bertrand Tornil */
+
+body {
+    font-family: times, serif;
+    font-size: 11.5pt;
+    background: #FFF;
+    color: #000;
+    margin: auto;
+    padding: 60px;
+    width: 70%;
+    max-width:800px;
+    text-align: justify;
+}
+
+img {
+    border: solid black 1px;
+    max-width : 100%;
+    height : auto;
+}
+
+h1, h2, .keywords, h3, h4 {
+    font-family: helvetica, sans-serif;
+    font-weight: bold;
+    margin: 0 0 0 0;
+    page-break-after: avoid;
+}
+
+h2, .keywords, h3, h4 {
+    margin: 1em 0 0 0;
+    page-break-after: avoid;
+}
+
+h1 {
+    font-size: 21pt;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.author {
+    font-style: italic;
+    font-size: 14pt;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.address {
+    font-family: helvetica, sans-serif;
+    font-size: 11.5pt;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.cr {
+    font-size: 9pt;
+}
+
+h2, .keywords {
+    font-size: 10.5pt;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 10.5pt;
+}
+
+h3.first {
+    margin-top: 0.5em;
+}
+
+h4 {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 10.5pt;
+}
+
+p {
+    text-align: justify;
+    margin: 0 0 1em 0;
+}
+
+ul {
+    margin: -0.5em 0 0.5em;
+}
+
+.figure {
+    margin: 1em 40px 1em;
+
+}
+
+.figure img {
+    padding: 10px;
+    margin: 0 0 0.5em 0;
+
+}
+
+.figure div {
+    text-align: center;
+}
+
+.figure div span {
+    font-weight: bold;
+}
+
+.footnote {
+    text-align: left;
+    font-size: 10pt;
+    float: right;
+    position: relative;
+    width: 160px;
+    height: 0px;
+    left: 180px;
+    top: -20px;
+}
+
+/* hack to make MS Internet Explorer properly lay out the floating footnote*/
+* html .footnote { width: 0px; }
+.code {
+    font-family: monospace;
+    font-size: 9pt;
+    white-space: pre;
+}
+
+.l {
+    float: left;
+}
+
+.r {
+    text-align: justify;
+    margin: 0 0 0.5em 2em;
+}
+
+.sc {
+    font-variant: small-caps;
+}
+
+a:link, a:visited, a:active {
+    text-decoration: none;
+    background: transparent;
+    color: #666;
+}
+
+a:hover {
+    text-decoration: none;
+    background: transparent;
+    color: #000;
+}
+
+li {
+    margin-top: 1em;
+    text-align: justify;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+ol ol {
+    list-style-type: lower-alpha;
+}
+
+

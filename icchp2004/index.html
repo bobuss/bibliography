@@ -1,0 +1,598 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../style.css" media="screen, print">
+
+    <style type="text/css">
+      <!-- td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}-->
+    </style>
+
+    <title> Using SVG and a Force Feedback Mouse to Enable
+Blind People to Access ``Graphical'' Web Based Documents</title>
+
+  </head>
+
+  <body>
+
+
+
+    <h1>Using SVG and a Force Feedback Mouse to Enable
+      Blind People to Access "Graphical" Web Based Documents </h1>
+
+    <div class="author"> Nadine Baptiste-Jessel, Bertrand Tornil and Benoit Encelle</div>
+    <div class="address">
+      <a href="http://www.irit.fr/">Institut de Recherche en Informatique de Toulouse</a><br>
+      Université Paul Sabatier - Toulouse 3<br>
+      31062 Toulouse Cedex, France <br>
+      <a href="mailto:bertrand.tornil@gmail.com">bertrand.tornil@gmail.com</a><br>
+    </div>
+
+
+
+
+<h2> Abstract</h2>
+We present a system that enables a blind user  to access 2D WEB
+based "graphical" documents. After introducing the SVG format
+and the Force Feedback Mouse, we present how, in a WEB browser
+application, we associate force, voice and sound feedback.
+
+
+Our approach is applied with two kinds of graphical information:
+geographical and musical information. In both application, after a
+training phase of the mouse handling, the user can make his own
+mental construction of displayed data. When the user knows the
+relative position of different elements, he can move the mouse
+pointer towards the region he wants.
+
+ <h2><a name="tth_sEc1">
+1</a>&nbsp;&nbsp;Introduction</h2>
+
+
+In a classical situation, a blind user uses to handle a keyboard
+to operate a computer. The machine answers him by a voice
+synthesis and/or a braille display. The text reading is adapted to
+these methods. When browsing the WEB, a blind user will have
+accessibility problems with graphical documents. The W3C has
+proposed guidelines [<a href="#wai" name="CITEwai">1</a>] for web authors to design their WEB
+sites. For instance, graphical data have to be linked with a
+textual description. So, a graphic document may be presented to
+him by long and tiresome descriptions, when they are available.
+
+
+The force feedback devices are used within the context of the
+accessibility for the blind users because they enable a more
+direct interaction based on sensory capacities.
+
+
+Many works [<a href="#omodhrain" name="CITEomodhrain">2</a>] [<a href="#offen" name="CITEoffen">3</a>] [<a href="#wies" name="CITEwies">4</a>]
+[<a href="#colwell98use" name="CITEcolwell98use">5</a>] [<a href="#ramstein96" name="CITEramstein96">6</a>] [<a href="#mag:2002" name="CITEmag:2002">7</a>] aim at using
+a force feedback device to make a haptic feedback to the visual
+elements displayed on the screen.  For example, passing of the
+pointer of the force feedback mouse on an icon will cause a small
+jolt in the user hand. Moreover, Dufresne showed the interest of
+the audio-haptic bimodality for blind users [<a href="#dufresne" name="CITEdufresne">8</a>].
+
+
+We will first set the main definitions of the haptic perception.
+We propose a specific context of use for these devices: relative
+localization. We will show some technical precisions about our
+system. Then we will present two prototypes that enable blind
+people to access geographical and musical documents in a web
+context. Lastly, we will conclude by presenting the outlooks which
+we consider.
+
+
+ <h2><a name="tth_sEc2">
+2</a>&nbsp;&nbsp;Definitions of Haptic Context : Relative Localization</h2>
+
+
+The tactilo-kinesthetic or " haptic" [<a href="#revesz" name="CITErevesz">9</a>] system is
+the synthesis of the movements of exploration of the motor system
+and of perceptions of the tactile system. The haptic sense is thus
+both effector and receptor. It consists of :
+
+
+
+<ol type="1">
+<li> the cutaneous sense: it is the touch sense. It allows
+to feel the temperature, the pressure or the pain, and is relayed
+by sensory receptors located under the skin.
+
+</li>
+
+<li> the kinesthetic sense: it is the sense related on the
+position and the movements of the body. It enables us for example
+to know the weight of an object we're handling and its position.
+It is relayed by receptors based in the muscles, the tendons and
+the articulations.
+
+</li>
+</ol>
+
+
+The handling of force feedback pointing devices as a mouse is
+based on the kinesthetic perception of the arm. This perception
+enables us to visualize the position of the hand in space. Thus,
+if an haptic event, like a vibration or a shock, occurs during a
+move of the arm, we can mentally represent the position that the
+hand had when the event occurred.
+
+
+Associated with a voice or sound synthesis, and thanks to the
+sensory memory, this approach will allow the rebuilding of a
+mental image of an object from the relative positions of the
+elements of this object.
+
+
+The two applications which we will present are founded on this
+context.
+
+
+ <h2><a name="tth_sEc3">
+3</a>&nbsp;&nbsp;Technical Aspects</h2>
+
+
+     <h3><a name="tth_sEc3.1">
+3.1</a>&nbsp;&nbsp;SVG Format</h3>
+
+
+We use the SVG format (Scalable Vector Graphic [<a href="#svg" name="CITEsvg">10</a>]), which
+is an application of  XML (eXtended Markup Language). A SVG file
+is coded in marked-up plain text and is read by the client
+computer as a text file. Indeed, its contents can be indexed by
+search engines and it can be generated. Moreover, SVG supports the
+DOM (Document Object Model) and can react to the user events via a
+script programming. SVG files can be displayed on an Internet
+browser with the plugin from Adobe [<a href="#adobesvg" name="CITEadobesvg">11</a>].
+
+
+In our applications, the graphical elements are defined explicitly
+in SVG file as lists of coordinates. It is a real advantage
+compared to the image bitmap formats.
+
+
+Thanks to its features, the SVG format is yet used in an
+accessibility context [<a href="#gardner" name="CITEgardner">12</a>] [<a href="#campin" name="CITEcampin">13</a>].
+
+
+     <h3><a name="tth_sEc3.2">
+3.2</a>&nbsp;&nbsp;Wingman Forces Feedback Mouse </h3>
+
+
+This force feedback mouse (figure <a href="#fig:mouse">1</a>), was created by
+Immersion Corporation [<a href="#immersion:devices" name="CITEimmersion:devices">14</a>] and marketed by
+Logitech.
+
+
+The mouse is interdependent of its base. The effective surface of
+work is of 1.9 X 2.5 cm and the forces can reach 1N in peak. The
+Wingman formerly was a game device, but its use
+was diverted toward research on the accessibility [<a href="#omodhrain" name="CITEomodhrain">2</a>]
+[<a href="#wies" name="CITEwies">4</a>] [<a href="#offen" name="CITEoffen">3</a>] [<a href="#gardner" name="CITEgardner">12</a>] [<a href="#campin" name="CITEcampin">13</a>].
+
+
+
+
+    <a name="tth_fIg1">
+    </a>
+    <div class="figure">
+      <a name="fig:mouse">
+      </a>
+      <center>
+    <img src="./wingman.png" alt="Figure 1: Wingman force feedback mouse" width='165' height='139'>
+      </center>
+      <div>
+    <span>Figure 1: Wingman force feedback mouse</span>
+      </div>
+    </div>
+
+
+
+Immersion Corporation proposes a plugin for the Internet
+navigators, which gives the possibility to control a force
+feedback device, via the script programming contained in a HTML
+page [<a href="#immersion:plugin" name="CITEimmersion:plugin">15</a>].
+
+
+     <h3><a name="tth_sEc3.3">
+3.3</a>&nbsp;&nbsp;Architecture of our Applications</h3>
+
+
+In a WEB context, the architecture we use is a Client-Server
+Scheme on a Local Area Network (Figure <a href="#fig:archi">2</a>).
+
+
+
+
+    <a name="tth_fIg2">
+    </a>
+    <div class="figure">
+      <a name="fig:archi">
+      </a>
+
+      <center>
+    <img src="./archi.png" alt="Figure 2: System architecture" width='400' height='230'>
+      </center>
+      <div>
+    <span>Figure 2: System architecture</span>
+      </div>
+    </div>
+
+
+
+On the server side, we have the SVG files and the sound files. By
+now, the SVG files are stored on the server or generated on the
+client via an ECMAScript programming. We plan to generate all SVG
+files on the server via perl programming language, accessing to
+databases. For the sound files, in this first prototype, we use a
+speech and  sound synthesis on the server to generate them. That
+may avoid any conflict. Indeed, in a general case, a blind user
+use his own screen reader and his own speech synthesis.
+
+
+The client browser must have downloaded from the server the
+different plugins that enable our system to work : the "Immersion
+Web Plugin" [<a href="#immersion:plugin" name="CITEimmersion:plugin">15</a>] for the force feedback and
+the "Adobe SVG Viewer Plugin" [<a href="#adobesvg" name="CITEadobesvg">11</a>] in order to
+display the SVG files.
+
+
+ <h2><a name="tth_sEc4">
+4</a>&nbsp;&nbsp;Description of the Geographical Application</h2>
+In our application (figure <a href="#fig:geo">3</a>), a map is displaying the
+USA, showing the states. A blind user uses the
+ force feedback mouse to explore the surface of the screen. The mouse can have
+ two different behaviors. When the pointer of the mouse:
+
+<ol type="1">
+<li> goes out of the map area, the user feels a texture effect in his hand.
+
+</li>
+
+<li> pass on a region, it is "magnetized" towards its center.
+
+</li>
+</ol>
+
+
+A sound feedback gives the name of the state, via a screen reader and a voice synthesis.
+Now, when the user has his mouse pointer toward a region, he has to force to quit the state
+and either
+
+<ol type="1">
+<li> falls into a region bordering.
+
+</li>
+
+<li> leaves the map, and then feels an effect of texture
+
+</li>
+</ol>
+
+    <a name="tth_fIg3">
+    </a>
+    <div class="figure">
+      <a name="fig:geo">
+      </a>
+      <center>
+    <img src="./geo1.png" alt="Figure 3: Geographical Application" width='400' height='331'>
+      </center>
+      <div>
+    <span>Figure 3: Geographical Application</span>
+      </div>
+    </div>
+
+
+
+The study of geography is well adapted to the use of the mouse, as
+it may require a transfer of information from the computer to the
+user, via the mouse. With HTML tags and bitmap pictures, the blind
+user could only "reach" the links name through the screen reader
+with no logical order, with the TAB key. Using a force feedback
+mouse enables them to apprehend the layout of the links, and thus
+the layout of the regions.
+
+
+ <h2><a name="tth_sEc5">
+5</a>&nbsp;&nbsp;Description of the Musical Application</h2>
+
+
+In order to use the same approach in music, we needed a spatial
+view of musical data. Jean Marc Chouvel has showed a torus-shaped
+hexagonal representation of a musical score [<a href="#chouvel" name="CITEchouvel">16</a>]. This
+representation provides some nice harmonic characteristics.
+
+
+     <h3><a name="tth_sEc5.1">
+5.1</a>&nbsp;&nbsp;Hexagonal Representation of Musical Data</h3>
+
+
+It is a instantaneous representation of the score. Notes are
+showed independently from eighth interval. They are displayed on
+an hexagonal lattice, showing on figure <a href="#fig:hexagone">4</a>. It is
+also a torus representation : it loops horizontally and
+vertically.
+
+
+
+
+<a name="tth_fIg4">
+</a>
+ <div class="figure">
+      <a name="fig:hexagone">
+      </a>
+      <center>
+    <img src="./gamme.png" alt="Figure 4: Hexagonal Representation" width='400' height='362'>
+      </center>
+      <div>
+    <span>Figure 4: Hexagonal Representation</span>
+      </div>
+    </div>
+
+
+
+Main features of this representation are described in
+[<a href="#Mathieu02a" name="CITEMathieu02a">17</a>] :
+
+
+
+<ol type="1">
+<li> Vertical axis is made by major thirds. The cycle is long of 3.
+
+</li>
+
+<li> Axis from the left bottom to the right top is made by minor thirds. It is 4 cells long cycle.
+
+</li>
+
+<li> Last axis (from the right bottom to the left top) is made by fifths. This axis has got every notes and its long is 12.
+
+</li>
+
+<li> From a note, its neighbors in the representation are notes with a strong harmonic
+  relationship (third or fifth)
+
+</li>
+
+<li> close chromatic notes (half tone and tone) are separate by one line between 2
+  hexagons.
+
+</li>
+
+<li> when two shapes are identical, it is the same chord.
+
+</li>
+</ol>
+
+
+     <h3><a name="tth_sEc5.2">
+5.2</a>&nbsp;&nbsp;Implementation</h3>
+
+
+In our prototype, we use the hexagonal representation in order to
+present the different chords to the user.
+
+
+We have implemented the simplest chords : major, minor, augmented
+and diminished fifth, dominated, major, minor and diminished
+seventh. Thanks to the hexagonal representation, each chord has
+got a specific shape (Figure <a href="#fig:accords">5</a>).
+
+
+
+
+<a name="tth_fIg5">
+</a>
+ <div class="figure">
+      <a name="fig:accords">
+      </a>
+      <center>
+    <img src="./accords.png" alt="Figure 5: Simple chords" width='400' height='434'>
+      </center>
+      <div>
+    <span>Figure 5: Simple chords</span>
+      </div>
+    </div>
+
+
+
+     <h3><a name="tth_sEc5.3">
+5.3</a>&nbsp;&nbsp;Haptic Feedback and Usability</h3>
+
+
+When using our prototype, a blind user is able to explore the
+hexagonal draughtboard. Each note is materialized via the mouse by
+magnetizing the cursor on the center of the hexagon, while a sound
+synthesis play the note. In any moment, the user can build one of
+the chord available by pressing a key.
+
+
+Once a chord created, haptic feedback changes. Then, user can
+recognize the specific shape of the chord.
+
+
+ <h2><a name="tth_sEc6">
+6</a>&nbsp;&nbsp;Conclusion and Outlooks</h2>
+In our approach, the layout of graphic elements is displayed
+thanks to a force and sound feedback. This enables blind users to
+access graphical information.
+
+
+We plan to prepare a test protocol, to estimate how our
+applications can really improve the ability for blind users to
+access geographical or musical documents. However, for the
+geographical experience we have already tested our system with two
+blind users, and they admit that our system enables them to create
+a mental representation of a geographical map; that is very useful
+in a pedagogic situation.
+
+
+For the musical application, we are about to extend the usability
+of our prototype. By now, only an explorative mode is available.
+Next, we plan to add a listening mode, in order to access and
+analyze harmonic scheme in a music. We will add also an editing
+mode. Some features of the hexagonal representation hadn't been
+used, such as spatial animation of cadences (an authentic cadence
+is a translation of a triangle by one cell).
+
+
+Finally, we are working on a more general approach of our
+architecture. We are developing a software framework to create
+easier any haptic-SVG WEB applications. And we are still testing
+other speech and sound synthesis and SVG generation scripting
+methods.
+
+
+
+<h2>References</h2>
+
+<dl compact="compact">
+ <dt><a href="#CITEwai" name="wai">[1]</a></dt><dd>
+World Wide Web Consortium:
+ Web Accessibility Initiative (WAI).
+ http://www.w3.org/WAI/ (2004)
+
+
+</dd>
+ <dt><a href="#CITEomodhrain" name="omodhrain">[2]</a></dt><dd>
+Sile&nbsp;O'Modhrain, M., Guillepsie, R.:
+ The moose: A haptic user interface for blind persons.
+ In: Procedings of the Third WWW6 Conference, Santa Clara, California.
+  (1996)
+
+
+</dd>
+ <dt><a href="#CITEoffen" name="offen">[3]</a></dt><dd>
+Offen, D., Thomlinson, B.:
+ Good vibrations: Using a tactile mouse to convey page layout
+  information to visually impaired computer users.
+ In: Proceedings of CSUN'S Sixteenth Annual International Conference
+  :"Technology and Persons with Disabilities", Los Angeles. (2001)
+
+
+</dd>
+ <dt><a href="#CITEwies" name="wies">[4]</a></dt><dd>
+Wies, E., Gardner, J., O'Modhrain, M., Hasser, C., Bulatov, V.:
+ Web-based touch display for accessible science education.
+ Haptic Human-Computer Interaction <b>LNCS 2052</b> (2001)  52-60
+
+
+</dd>
+ <dt><a href="#CITEcolwell98use" name="colwell98use">[5]</a></dt><dd>
+Colwell, C., Petrie, H., Kornbrot, D., Hardwick, A., Furner, S.:
+ Use of a haptic device by blind and sighted people: perception of
+  virtual textures and objects.
+ In: Improving the quality of life for the European citizen:
+  technology for inclusive design and equality.
+ I. placencia-porrero and e. ballabio edn. Amsterdam: IOS Press (1998)
+
+
+</dd>
+ <dt><a href="#CITEramstein96" name="ramstein96">[6]</a></dt><dd>
+Ramstein, C., Martial, O., Dufresne, A., Carignan, M., Chassé, P., Mabilleau,
+  P.:
+ Touching and Hearing GUIs: Design issues for the PC-Access System.
+ In: ASSET'96, ACM/SIGCAPH. In 2nd Annual ACM Conference on Assistive
+  Technologies, Vancouver, BC, Canada. (1996)  2-9
+
+
+</dd>
+ <dt><a href="#CITEmag:2002" name="mag:2002">[7]</a></dt><dd>
+Magnusson, C., Rassmus-Gröhn, K., Sjöström, C., Danielsson, H.:
+ Navigation and recognition in complex haptic virtual environments - 
+  reports from an extensive study with blind users.
+ http://www.english.certec.lth.se/staff/kirre/#publ (2002)
+
+
+</dd>
+ <dt><a href="#CITEdufresne" name="dufresne">[8]</a></dt><dd>
+Dufresne, A., Martial, O., Ramstein, C.:
+ Multimodal user interface system for blind and 'visually occupied'
+  users: Ergonomic evaluation of the haptic and auditive dimensions.
+ In: Proceedings of IFIP International Conference Interaction'95,
+  Lillehammer, Norway. (1995)  163-168
+
+
+</dd>
+ <dt><a href="#CITErevesz" name="revesz">[9]</a></dt><dd>
+Revesz, G.:
+ Psychology an art of the blind.
+ New York: Longmans (1950)
+
+
+</dd>
+ <dt><a href="#CITEsvg" name="svg">[10]</a></dt><dd>
+World Wide Web Consortium:
+ the SVG format.
+ www.w3.org/Graphics /SVG/Overview.htm8 (2001)
+
+
+</dd>
+ <dt><a href="#CITEadobesvg" name="adobesvg">[11]</a></dt><dd>
+Adobe:
+ Adobe svg viewer.
+ http://www.adobe.com/svg/viewer/install/main.html (2004)
+
+
+</dd>
+ <dt><a href="#CITEgardner" name="gardner">[12]</a></dt><dd>
+Gardner, J., Bulatov, V.:
+ Smart figures, svg, and accessible web graphics.
+ In: Proceedings of Technology And Persons With Disabilities
+  Conference 2001, Los Angeles. (2001)
+
+
+</dd>
+ <dt><a href="#CITEcampin" name="campin">[13]</a></dt><dd>
+Campin, B., Brunet, L.L., McCurdy, W.A., Siekierska, E.M.:
+ Svg mapping for people with visual impairment.
+ In: Proceedings of SVG Open 2003. (2003)
+
+
+</dd>
+ <dt><a href="#CITEimmersion:devices" name="immersion:devices">[14]</a></dt><dd>
+Immersion:
+ Touchsense devices.
+ http://www.immersion.com/developer/technology /devices/index.php
+  (2003)
+
+
+</dd>
+ <dt><a href="#CITEimmersion:plugin" name="immersion:plugin">[15]</a></dt><dd>
+Immersion:
+ Immersion web plugin.
+ http://www.immersion.com/plugins/ (2002)
+
+
+</dd>
+ <dt><a href="#CITEchouvel" name="chouvel">[16]</a></dt><dd>
+Chouvel, J.M., Assayag, G., Cholleton, J.P.:
+ La représentation hexagonale toroïdale, application à l'analyse
+  harmonique de la musique d'hermeto pascoal.
+ Séminaire MaMux 2002 (2002)
+
+
+</dd>
+ <dt><a href="#CITEMathieu02a" name="Mathieu02a">[17]</a></dt><dd>
+Mathieu, B.:
+ Outils informatiques d'analyse musicale.
+
+  http://www.ircam.fr/equipes/repmus/Rapports/mathieu2002/... ...outils-analyse-BM-2002.pdf (2002)</dd>
+</dl>
+
+<!-- GA -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32527212-2']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End GA -->
+  </body>
+</html>

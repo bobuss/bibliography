@@ -1,0 +1,620 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <link rel="stylesheet" type="text/css" href="../style.css" media="screen, print">
+    <style type="text/css">
+      <!-- td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;} --></style>
+
+    <title>Force Feedback and Performance in a Point-and-Click Task</title>
+  </head>
+
+  <body>
+
+
+    <h1>Force Feedback and Performance </ br> in a Point-and-Click Task</h1>
+
+    <div class="author"> Bertrand Tornil and Nadine Baptiste-Jessel</div>
+    <div class="address">
+      <a href="http://www.irit.fr/">Institut de Recherche en Informatique de Toulouse</a><br>
+      Université Paul Sabatier - Toulouse 3<br>
+      31062 Toulouse Cedex, France <br>
+      <a href="mailto:bertrand.tornil@gmail.com">bertrand.tornil@gmail.com</a><br>
+    </div>
+
+
+    <h2>Abstract</h2>
+    <p>This article present a survey about a point-and-click task. This
+    task was done with a force feedback mouse. Compared with a point-and-click
+    task without force feedback,  we have not observed a significant
+    reduction of the performance when the target got a force
+    feedback. However, when some other force fields are between the target
+    and the movement origin, (haptic desktop for instance), performances
+    decrease about 23,6%. We propose a dynamic force feedback, where
+    the force intensity decreases when the mouse speed raises up. Performances
+    are again worse than without force feedback, but only about 15,6%.</p>
+
+
+    <p> <span class="keywords">Categories and Subject Descriptors:</span>
+      H.5.2 [<b>Information Interfaces and Presentation (e.g., HCI)</b>]:
+      User Interfaces &mdash; <i>Haptic I/O, Benchmarking</i>
+    </p>
+
+    <p> <span class="keywords">Keywords :</span>  Haptic I/O, Benchmarking
+    </p>
+
+
+
+    <h2><a name="tth_sEc1"></a>Introduction</h2>
+
+    <p>With the graphical user interfaces (GUI) and the mouse, the
+    point-and-click task is a very frequent gesture when a computer is
+    used. The developpement of force feedback devices for the desktop computers aroused the
+    interest of the researchers in Human Computer Interaction. Indeed, the
+    performances of the force feedback devices in the fields for
+    which they were conceived (telerobotics and physical simulation)
+    promised clear improvements.</p>
+
+    <p>After having set the specific terminology for the force feedback
+    interaction, we will review, the various forms
+    which the force feedback could take, from
+    telerobotics to haptic computer desktops. In a synthesis
+    of the previous works treating of the performances of a point-and-click
+    task, we will see that
+    the case where several potential targets disturbs the gesture, was
+    very few studied. Our test protocol, aiming at studying this case,
+    is then detailed, and its results are discussed. We finish by presenting
+    the future directions that this study opens for our researches.</p>
+
+
+    <h2><a name="tth_sEc2"></a>HAPTIC PERCEPTION</h2>
+
+    <p>The tactilo-kinesthesic or
+    "haptic"&nbsp;[<a href="#revesz" name="CITErevesz">11</a>] system consists of&nbsp;:</p>
+
+    <ul>
+      <li> the cutaneous sense&nbsp;: it is the touch sense. It allows
+    to feel the temperature, the pressure
+    or the pain, and is relayed by sensory receptors located under
+    the skin.
+      </li>
+
+      <li> the kinesthetic sense&nbsp;: it is the sense related on the
+    position and the movements of the body. It enables us for example to
+    know the weight of an object we're handling and its position. It
+    is relayed by receptors based in the muscles, the tendons and the
+    articulations&nbsp;[<a href="#Burdea1996" name="CITEBurdea1996">2</a>].
+      </li>
+    </ul>
+
+
+    <p>We can add to these definitions the proprioceptive perception
+    (often included in kinesthetic perception). Proprioceptive perception
+    makes it possible to know the configuration of our body in space.</p>
+
+    <h2><a name="tth_sEc3"></a>Haptic Feedback Performance in a Point and Click Task</h2>
+
+    <p>Hapic feedback is used with an aim of improving the human motor
+    performances in the virtual and telerobotics
+    environments&nbsp;[<a href="#Rosenberg1994" name="CITERosenberg1994">12</a>,<a href="#Sheridan1992" name="CITESheridan1992">13</a>]. The quantitative tools
+    with which we can evaluate the performances in a point-and-clic task
+    are based on research of Fitts&nbsp;[<a href="#Fitts:54" name="CITEFitts:54">6</a>].</p>
+
+
+    <h3><a name="tth_sEc3.1"></a>Fitts'Law</h3>
+
+    <p>The movement time (MT) necessary to select a target of
+    size W located at a distance A is&nbsp;: </p>
+    <a name="mackenzie">
+    </a>
+
+
+    <table border="0" width="100%">
+    <tr>
+      <td>
+        <table align="center" cellspacing="0"  cellpadding="2">
+        <tr>
+          <td nowrap="nowrap" align="center">
+            MT = a + blog<sub>2</sub>(A/W +1)
+          </td>
+        </tr>
+        </table>
+      </td>
+      <td width="1%">(1)
+      </td>
+    </tr>
+    </table>
+
+
+    <p>where a, b are empirically determined
+    constants. The logarithm log<sub>2</sub>(A/W) represents
+    the index of difficulty (ID) of the task and is expressed out of
+    bits. Higher is the value of ID and more difficult is the task.
+    If MT is expressed in second, the constant a will be
+    expressed in second and b in seconde/bit. 1/b is the index of performance
+    (IP) and is expressed in bit/seconde. </p>
+
+
+    <p>Let us note that the equation&nbsp;(<a href="#mackenzie">1</a>) is called the
+      Shannon's formulation of the Fitts'law and was proposed by
+      MacKenzie in 1992 (see&nbsp;[<a href="#MacKenzie92" name="CITEMacKenzie92">9</a>] for a discussion on
+      the various formulations of the Fitts'law).</p>
+
+
+    <h3><a name="tth_sEc3.2"></a>Previous Works</h3>
+
+    <p>Several studies evaluated the use of haptic devices in a
+      point-and-click task.</p>
+
+
+    <p>In 1994, Akamatsu and MacKenzie&nbsp;[<a href="#AKAMATSU1996" name="CITEAKAMATSU1996">1</a>] studied a
+      tactile and force feedback mouse. They showed significant reductions
+      of the movement time MT, when the tactile method is employed.
+      The effect is particularly marked for the small targets. However, they
+      also noted an increase in the error rate. Moreover, the use of the
+      kinesthetic method only does not make significantly lower times of target
+      acquisition. Lastly, the index of performance IP is not significantly
+      different from that observed without force feedback.</p>
+
+
+    <p>Eberhardt [<a href="#Eberhardt1997" name="CITEEberhardt1997">5</a>] and Hasser
+      [<a href="#Hasser1998" name="CITEHasser1998">7</a>] studied, respectively in 1997 and 1998, the
+      effects of areas of attraction around the targets. These areas bring
+      the pointer of the mouse to the center of the target. In these cases,
+      the performances observed are really
+      better (about 25%) than without force feedback.</p>
+
+
+    <p>For Wall [<a href="#Wall2000" name="CITEWall2000">14</a>], the study was focused on the index of performance
+      IP  during a point-and-click, carried out with PHANToM. He found
+      that the force feedback, although improving acquisition times, does
+      not have effects on the index of performance IP. On the other hand,
+      for the "ballistic" movements (ID  &lt;  3bits), they showed a
+      significant improvement of the index of performance of the task.</p>
+
+
+    <p>Lastly, Dennerlein also studied the contribution of the force
+      feedback. A first study [<a href="#Dennerlein2000" name="CITEDennerlein2000">3</a>] realized in 2000, was
+      about the follow-up of curves. The force feedback took the form of an
+      attraction of the cursor on the curve due to a kind of haptic
+      tunnel. He proved that the movements carried out with a feedback of
+      force were 52% faster than without. A second study
+      [<a href="#Dennerlein2001" name="CITEDennerlein2001">4</a>], realized in 2001, was about the
+      movements of tagets acquisition. It was the concept of attractions area
+      around the target which was retained. The results are similar with
+      those of Eberhardt and Hasser&nbsp;: an improvement of 25% of the
+      performances is observed with the use of the force feedback. It also
+      showed that this difference was reduced when other haptic basins of
+      attraction were generated. </p>
+
+
+    <p>In conclusion, it appears that the force feedback tend to improve the
+      performances. Acquisition time of a target improve of 25% when
+      the force fields acts beyond the target; on the other hand, when
+      the force is activated only with the overflight of the target,
+      times are not significantly different. Moreover, in the case of
+      disturbances resulting from others target potential which generate
+      their own force feedback, as in the case of an office haptiquement
+      increased (for example the immersion haptic desktop
+      [<a href="#immersion" name="CITEimmersion">8</a>]), the performances drop. </p>
+
+    <p>We now will study how these disturbances influence the performances,
+      in the case of a force feedback restricted to the target, and with a
+      workspace entirely filled of zones generating a haptic feedback.</p>
+
+
+    <h2><a name="tth_sEc4"></a>TEST PROTOCOL</h2>
+
+
+    <h3><a name="tth_sEc4.1"></a>Subjects</h3>
+    <p>Nine subjects (8 men and
+      1 woman, from 21 years old to 40 years old) participated in the experiment. All the
+      subjects were familiar with the use of a mouse; two of them had
+      already used a force feedback mouse.</p>
+
+
+    <h3><a name="tth_sEc4.2"></a>Apparatus</h3>
+
+    <p>We use the "Wingman
+      Force Feedback Mouse" (Figure&nbsp;<a href="#fig:mouse">1</a>) conceived by
+      Immersion Corporation [<a href="#immersion" name="CITEimmersion">8</a>] and marketed by
+      Logitech.</p>
+
+
+
+
+    <a name="tth_fIg1">
+    </a>
+    <div class="figure">
+      <a name="fig:mouse">
+      </a>
+      <center>
+      <img src="./wingman.png" alt="Figure 1: Wingman force feedback mouse" width='165' height='139'>
+      </center>
+      <div>
+    <span>Figure 1: Wingman force feedback mouse</span>
+      </div>
+
+
+    </div>
+
+
+    <p>The mouse itself is interdependent of its base. In fact, the working
+      surface is very reduced&nbsp;: 1,9&nbsp;cm by
+      2,5&nbsp;cm. Lastly, the mouse can generate forces that can reach
+      1&nbsp;N.</p>
+
+
+    <h3><a name="tth_sEc4.3"></a>Procedure</h3>
+
+    <p>During the experiment, each subject must go to click on a small
+      circle in the right top corner of the screen&nbsp;: the origin. Once the
+      click carried out on the origin, an hexagonal target appears on
+      the screen. The subject have to go to click as quickly as
+      possible on this target. The subject can prepare its gesture as long
+      as the cursor of the mouse does not leave the origin. When he clicked
+      on the target, this one desappears and he must turn over to the origin
+      in order to generate a new target.  </p>
+
+
+    <p>The whole of the experiment is divided into 4 phases, corresponding to
+      4 conditions of haptic feedback&nbsp;: </p>
+
+
+    <ul>
+      <li>MT condition&nbsp;: no force feedback.</li>
+      <li>MTF condition&nbsp;: the force is activated when the
+    mouse cursor overflies the target. The mouse is attracted
+    in the center of the target.</li>
+      <li>MTDF condition&nbsp;: the entire screen is filled by a
+    mosaic of hexagons. Each hexagon activate a force when it is
+    overflown by the cursor. The MTDF condition simulates the worse
+    case&nbsp;: the entire screen is filled by potential targets. However, this
+    represent a condition very closed to an haptic desktop with numerous
+    potential targets.</li>
+      <li>MTDFH condition&nbsp;: same thing that the MTDF condition,
+    but the intensity of the force feedback depends on the velocity
+    of the mouse, according to law
+    <br clear="all" /><table border="0" width="95%"><tr><td>
+        <table align="center" cellspacing="0"  cellpadding="2"><tr><td nowrap="nowrap" align="center">
+            Intensity<sub>force</sub> = </td><td nowrap="nowrap" align="center">
+            Intensity<sub>max</sub>
+            <div class="hrcomp"><hr noshade="noshade" size="1"/></div>velocity + 1<br /></td><td nowrap="nowrap" align="center">
+              </td></tr></table>
+          </td></tr></table>
+
+    the intensity will be thus weaker when the velocity of the mouse is high.</li>
+    </ul>
+
+
+    <p>Before each timed phase, a training phase allows the subject to be
+      accustomed to handle the device under the various conditions. </p>
+
+    <p>There are 10 different targets. Each one is presented 4 times at the
+      subject by phase. Thus, each subject will have 160 movements
+      origin-target to realize for a set of 1440 movements for the whole
+      of the subjects.</p>
+
+    <p>The parameters of the experiment are summarized in the
+      table&nbsp;<a href="#table1">1</a> and the protocol interface is shown on the
+      figure&nbsp;<a href="#fig:protocole">2</a>.</p>
+
+
+
+    <a name="tth_tAb1"></a>
+    <div class="figure">
+      <a name="table1">
+      </a>
+      <table border="1">
+      <tr>
+        <td>DISTANCES WITH THE TARGET</td><td>21, 72, 92, 138, 205, 233, 415, 586, 831, 938 pixels</td>
+      </tr>
+      <tr>
+        <td>SIZE OF THE TARGET </td><td>40 pixels </td>
+      </tr>
+      <tr>
+        <td>CONDITIONS </td><td>
+          <br>
+          <ul>
+        <li>MT&nbsp;: without force feedback,</li>
+        <li>MTF&nbsp;: force feedback on the target,</li>
+        <li>MTDF&nbsp;: force feedback on the checkerwork,</li>
+        <li>MTDFH&nbsp;: adaptative force feedback on the checkerwork</li>
+          </ul>
+        </td>
+      </tr>
+      </table>
+      <div>
+    <span>Table 1: parameters of the experiment.</span>
+      </div>
+
+    </div>
+
+    <a name="tth_fIg2">
+    </a>
+    <div class="figure">
+     <a name="fig:protocole">
+     </a>
+     <center>
+      <img src="./damier.png" alt="Figure 2: Origin and targets of the protocol" width='400' height='369'>
+    </center>
+    <div>
+    <span>Figure 2: Origin and targets of the protocol</span>
+    </div>
+
+    </div>
+
+
+    <h2><a name="tth_sEc5"></a>RESULTS AND DISCUSSION</h2>
+
+    <p>The analysis of variance (ANOVA) performed on the movement time enable us to
+      pronounce on the significativity of the experimental factors&nbsp;: the 4
+      experimental conditions and the 10 index of difficulty from our 10
+      different targets. It
+      appears that the factor "experimental conditions" is very significant
+      (F<sub>3,39</sub>=10.3, p &lt; 0.0001), as well as the factor "index of
+      difficulty" (F<sub>9,39</sub>=24.96, p &lt; 0.0001). Moreover, the two
+      factors do not influence each other (F<sub>27,39</sub>=0.35,p=1,0000).</p>
+
+    <p>The mean times for the 4 conditions of haptic feedback are shown in
+      table&nbsp;<a href="#table3">2</a>.  </p>
+
+
+
+
+    <a name="tth_tAb2"></a>
+    <div class="figure">
+      <a name="table3"></a>
+      <center>
+    <table border="1">
+        <tr><td align="center">MT </td><td align="center">MTF </td><td align="center">MTDF </td><td align="center">MTDFH </td></tr>
+        <tr><td align="center">585 ms </td><td align="center">584 ms </td><td align="center">723 ms </td><td align="center">676 ms </td></tr>
+        <tr><td align="center">- </td><td align="center">(-0,2%) </td><td align="center">(+23,6%) </td><td align="center">(+15,6%) </td></tr></table>
+      </center>
+      <div>
+    <span>Table 2: Mean movement times under the 4 conditions;
+      the percentages give the variation relative to the MT condition</span>
+      </div>
+
+    </div>
+
+    <p>We can already observe that there is no significant difference
+      between clicking on a target without force feedback (MT) and with
+      force feedback (MTF). This joined the observations of Akamatsu
+      [<a href="#AKAMATSU1996" name="CITEAKAMATSU1996">1</a>] and is explained by the fact why the force
+      feedback is activated only when the pointer overfly the target.
+      On the other hand, the fact that there are fields of force between the
+      origin and target (MTDF and MTDFH) generates a significant rise
+      of times (respectively +23,6% and +15,6% compared to the
+      movement without force feedback). In these cases, the pointing task is
+      perturbed by the other forces. Lastly, the adaptation of the
+      force feedback on the velocity of the cursor reduces
+      this loss of performance about 6,5%.</p>
+
+
+    <p>We could hope a better result for the MTDFH condition. However, the
+      <i>optimized initial impulse</i> model [<a href="#meyer1988" name="CITEmeyer1988">10</a>] give us an
+      explanation&nbsp;: the more likely cases of a point-and-clic task
+      consist of a first initial movement that under or over shoots the
+      target, followed by subsequent corrective movements. With our
+      adaptative force, the initial movement may be kept in a wrong target.</p>
+
+
+    <p>The linear regressions on the averages of the data give us the linear
+      coefficients of regression of the equation&nbsp;(<a href="#mackenzie">1</a>) for
+      the various conditions of haptic feedback. Thus, the table
+      <a href="#table2">3</a> presents the various models of the Fitts'law
+      according to these conditions.</p>
+
+
+
+
+    <a name="tth_tAb3"></a>
+    <div class="figure">
+      <a name="table2"></a>
+      <center>
+    <table border="1">
+        <tr><td>Conditions </td><td align="center">Fitts'law model </td><td align="right">R<sup>2</sup></td></tr>
+        <tr><td>MT </td><td align="center">MT = 0.25 + 0.122 ID  </td><td align="right">0,93 </td></tr>
+        <tr><td>MTF </td><td align="center">MT = 0.25 + 0.120 ID </td><td align="right">0,91 </td></tr>
+        <tr><td>MTDF </td><td align="center">MT = 0.38 + 0.123 ID </td><td align="right">0,96 </td></tr>
+        <tr><td>MTDFH </td><td align="center">MT = 0.31 + 0.130 ID </td><td align="right">0,90 </td></tr></table>
+
+      </center>
+      <div>
+    <span>Table 3: Fitts'law models. MT is the time of the
+      movement(ms), ID is the index of difficulty(bits)</span>
+      </div>
+    </div>
+
+    <p>The various conditions differ significantly only from their
+      intercepts. The slopes of each model are very close.
+      Lastly, we can note, due to the high values of the R<sup>2</sup> that
+      the Fitts'law explains more than 90% of the variance in observations. </p>
+
+    <p>We can now trace the synthesis of measurements of our experiment
+      (figure&nbsp;<a href="#fig:test">3</a>). </p>
+
+
+
+
+    <a name="tth_fIg3"></a>
+    <div class="figure">
+      <a name="fig:test">
+      </a>
+      <center>
+        <img src="./synth1.png" alt="Figure 3: Movement time for the 4 conditions" width='400' height='259'>
+      </center>
+
+    <div>
+    <span>Figure 3: Movement time for the 4 conditions</span>
+    </div>
+
+    </div>
+
+
+    <h2><a name="tth_sEc6"></a>PERSPECTIVES AND CONCLUSION</h2>
+    <p>For 50 years, the force feedback devices
+      have been used in many fields&nbsp;: telerobotics,
+      physical simulation, virtual reality, medical applications or
+      accessibility. The study of the human performances at the time of the
+      handling of these devices goes up with ten years, in fact when they were proposed in versions large-public.</p>
+
+
+    <p>It appeared that the force feedback could improve the performances,
+      but in cases not very applicable to complex situations&nbsp;: only one
+      haptic enhanced target. In the case of a multiplication of
+      the potential targets, the haptic feedback even becomes a factor of loss
+      of performances. </p>
+
+
+    <p>We proposed here an adaptive force feedback, calculated according to
+      the current velocity of the pointer. The performances only degrade by
+      15.6%.</p>
+
+
+    <p>We envisage to test other dynamic adaptations of the forces, based on
+      velocity or even acceleration. Moreover, we intend to modify the test
+      protocol in order to test the significativity of the sites of the
+      targets&nbsp;: which difference in performances can we observe in a
+      point-and-clic task where the target and the origin are separated by
+      aligned and non-aligned force fields? Due to the answer to this question, we would be
+      able to get indications for the designs of widgets with haptic Enhancement.</p>
+
+
+    <h2><a name="tth_sEc7"></a>AKNOWLEDGMEMENT</h2>
+    <p>We would like to thank Alain Baccini, Professor at the
+      Laboratory of Statistics and Probabilities of the University Paul
+      Sabatier (Toulouse 3) for assistance during the statistical analysis of the data.</p>
+
+
+<h2>References</h2>
+
+<dl compact="compact">
+ <dt><a href="#CITEAKAMATSU1996" name="AKAMATSU1996">[1]</a></dt><dd>
+M.&nbsp;Akamatsu and I.&nbsp;S. Mackenzie.
+ Movement characteristics using a mouse with tactile and force
+  feedback.
+ <em>Human-Computer Studies</em>, 45:483-493, 1996.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITEBurdea1996" name="Burdea1996">[2]</a></dt><dd>
+G.&nbsp;Burdea.
+ <em>Force and touch feedback for virtual reality</em>.
+ Wiley-Interscience; 1 edition (August 3, 1996), 1996.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITEDennerlein2000" name="Dennerlein2000">[3]</a></dt><dd>
+J.&nbsp;T. Dennerlein, D.&nbsp;B. Martin, and C.&nbsp;Hasser.
+ Force-feedback improves performance for steering and combined
+  steering-targeting tasks.
+ In <em>CHI '00: Proceedings of the SIGCHI conference on Human
+  factors in computing systems</em>, pages 423-429. ACM Press, 2000.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITEDennerlein2001" name="Dennerlein2001">[4]</a></dt><dd>
+J.&nbsp;T. Dennerlein and M.&nbsp;C. Yang.
+ Haptic force-feedback devices for the office computer: Performance
+  and musculoskeletal loading issues.
+ <em>Human Factors</em>, 43(2):278-86, 2001.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITEEberhardt1997" name="Eberhardt1997">[5]</a></dt><dd>
+S.&nbsp;Eberhardt, M.&nbsp;Neverov, T.&nbsp;West, and C.&nbsp;Sanders.
+ Force reflection for wimps: A button acquisition experiment.
+ In <em>Sixth Annual Symposium on Haptic Interfaces, International
+  Mechanical Engineering Congress and Exposition</em>, Dallas Texas, 1997.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITEFitts:54" name="Fitts:54">[6]</a></dt><dd>
+P.&nbsp;Fitts.
+ The information capacity of the human motor system in controlling the
+  amplitude of movement.
+ <em>Journal of Experimental Psychology</em>, 47:381-391, 1954.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITEHasser1998" name="Hasser1998">[7]</a></dt><dd>
+C.&nbsp;Hasser and A.&nbsp;Goldenberg.
+ User performance in a gui pointing task with a low-cost
+  force-feedback computer mouse.
+ In <em>Seventh Annual Symposium on Haptic Interfaces, International
+  Mechanical Engineering Congress and Exposition</em>, Anaheim, CA, 1998.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITEimmersion" name="immersion">[8]</a></dt><dd>
+Immersion Corporation.
+ web site at : http://www.immersion.com, 2005.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITEMacKenzie92" name="MacKenzie92">[9]</a></dt><dd>
+I.&nbsp;S. MacKenzie.
+ Fitts' law as a research and design tool in human-computer
+  interaction.
+ <em>Human-Computer Interaction</em>, 7(1):91-139, 1992.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITEmeyer1988" name="meyer1988">[10]</a></dt><dd>
+D.&nbsp;Meyer, J.&nbsp;Smith, S.&nbsp;Kornblum, R.&nbsp;Abrams, and C.&nbsp;Wright.
+ Optimality in human motor performance: ideal control of rapid aimed
+  movements.
+ <em>Psychological Review</em>, 95:340-370, 1988.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITErevesz" name="revesz">[11]</a></dt><dd>
+G.&nbsp;Revesz.
+ <em>Psychology and art of the blind</em>.
+ New York: Longmans, 1950.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITERosenberg1994" name="Rosenberg1994">[12]</a></dt><dd>
+L.&nbsp;Rosenberg.
+ <em>Virtual Fixtures</em>.
+ PhD thesis, Stanford University, 1994.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITESheridan1992" name="Sheridan1992">[13]</a></dt><dd>
+T.&nbsp;Sheridan.
+ Musings on telepresence and virtual presence.
+ <em>Presence-Teleoperators and Virtual Environments</em>, 1(1):120-126,
+  1992.
+ MIT Press.
+
+<div class="p"><!----></div>
+</dd>
+ <dt><a href="#CITEWall2000" name="Wall2000">[14]</a></dt><dd>
+S.&nbsp;Wall and W.&nbsp;Harwin.
+ Quantification of the effects of haptic feedback during motor skills
+  tasks in a simulated environment.
+ In <em>Proceedings of the 2nd PHANToM Users Research Symposium</em>,
+  pages 61-69, Zurich, Switzerland, July 2000.</dd>
+</dl>
+<!-- GA -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32527212-2']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End GA -->
+
+
+  </body>
+</html>

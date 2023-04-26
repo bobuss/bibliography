@@ -1,0 +1,515 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../style.css" media="screen, print">
+
+    <style type="text/css">
+      <!-- td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}-->
+    </style>
+
+
+    <title>Présentation de l'Harmonie Musicale par une Notation Spatiale et une Souris à Retour de Force</title>
+
+  </head>
+
+  <body>
+
+
+
+<h1>Présentation de l'Harmonie Musicale par une Notation Spatiale et une Souris à Retour de Force</h1>
+
+  <div class="author"> Bertrand Tornil</div>
+    <div class="address">
+      <a href="http://www.irit.fr/">Institut de Recherche en Informatique de Toulouse</a><br>
+      Université Paul Sabatier - Toulouse 3<br>
+      31062 Toulouse Cedex, France <br>
+      <a href="mailto:bertrand.tornil@gmail.com">bertrand.tornil@gmail.com</a><br>
+    </div>
+
+
+    <h2>RESUME </h2>
+
+    Cet article d&#233;crit une m&#233;thode qui facilite l'acc&#232;s des
+    utilisateurs non-voyants &#224; l'information musicale harmonique, &#224;
+    l'aide d'une repr&#233;sentation spatiale de la musique et d'une souris
+    &#224; retour de force. &nbsp;Nous proposons tout d'abord un contexte
+    d'utilisation de la souris &#224; retour de force : la localisation
+    relative. Cette derni&#232;re permet la reconstruction progressive de
+    l'image mentale que l'on se fait d'un document en prenant conscience
+    des positions de ses &#233;l&#233;ments. Nous pr&#233;sentons ensuite le
+    contexte technique qui sous-tend notre prototype, ainsi que les
+    diverses alternatives possibles. Nous d&#233;crivons alors le prototype de
+    notre application musicale et nous terminons en pr&#233;sentant les axes
+    de recherche que nous envisageons pour le futur : autres domaines
+    d'application (g&#233;ographie, g&#233;om&#233;trie) et contexte d'utilisation
+    enseignant-&#233;l&#232;ve .
+
+    <p> <span class="keywords">Mots Clés:</span> Accessibilit&#233;, retour de force, SVG,
+      notation hexagonale de l'harmonie.</p>
+
+
+
+    <h2> ABSTRACT </h2>
+
+    This paper describes a method which enables blind users to access to
+    harmonic information thank to a spatial representation and a force
+    feedback mouse. First of all, we propose a general context of using our
+    force feedback mouse: the relative localisation. The relative
+    localisation enables the progressive rebuilding of the mental image of
+    a graphical document by knowing the positions of its elements. Next, we
+    present the technical context of our prototype and the possible
+    alternatives. Then, we describe the prototype of our application and
+    &nbsp;we finish by the perspective of this project : some others
+    applicative context (geography, geometry) and "teacher-student"
+    architecture.
+
+
+
+    <h2>INTRODUCTION</h2>
+
+    Dans une situation classique, un utilisateur non-voyant utilise un
+    clavier pour interagir avec un ordinateur. La machine lui r&#233;pond via
+    une synth&#232;se vocale et/ou un afficheur braille. Cette m&#233;thode est
+    totalement adapt&#233;e &#224; l'acc&#232;s &#224; des documents textuels.
+    Cependant, lors d'une navigation sur Internet, l'utilisateur
+    non-voyant aura des probl&#232;mes avec les documents graphiques. Le
+    World Wide Web Consortium a propos&#233; des guides de conception [16]
+    pour les auteurs de sites WEB, afin que ces derniers soient plus
+    accessibles. Par exemple, &nbsp;une description textuelle doit &#234;tre
+    propos&#233;e &#224; la place d'une image. Le probl&#232;me persiste cependant
+    car d'une part ces descriptions ne sont pas toujours pr&#233;sentes, et
+    d'autre part parce que les descriptions textuelles peuvent vite
+    s'av&#233;rer longues et fastidieuses &#224; consulter.
+
+
+    L'utilisation de p&#233;riph&#233;riques &#224; retour de force a ainsi &#233;t&#233;
+    &#233;tudi&#233;e dans le cadre de l'accessibilit&#233;. En effet, ces
+    p&#233;riph&#233;riques autorisent une interaction plus directe bas&#233;e sur
+    les capacit&#233;s sensorielles.
+
+
+    Nous pr&#233;sentons ici une m&#233;thode pour acc&#233;der &#224; l'information
+    musicale (l'harmonie) utilisant une souris &#224; retour de force. Nous
+    allons tout d'abord pr&#233;senter l'utilisation que nous faisons du
+    retour de force pour l'accessibilit&#233;. Nous proposons un contexte
+    sp&#233;cifique : la localisation relative. Nous pr&#233;senterons ensuite
+    l'architecture client-serveur que nous avons retenue pour nos
+    prototypes ainsi que les d&#233;pendances technologiques de notre
+    syst&#232;me et les pistes possibles pour le futur. Dans la partie
+    suivante, nous d&#233;crirons notre prototype d'application permettant
+    l'accessibilit&#233; &#224; l'information harmonique pr&#233;sent&#233;e sous une
+    forme spatiale. Enfin nous terminerons en pr&#233;sentant les axes de
+    recherche que nous envisageons pour le futur : ouverture &#224;
+    dautres domaines comme la g&#233;ographie et la
+    g&#233;om&#233;trie et contexte d'utilisation
+    enseignant-&#233;l&#232;ve .
+
+
+
+    <h2>LA localisation relative</h2>
+
+    Le syst&#232;me tactilo-kinesth&#233;sique ou haptique[11] est la synth&#232;se
+    des mouvements d'exploration du syst&#232;me moteur et des perceptions du
+    syst&#232;me tactile. Le sens haptique est donc &#224; la fois effecteur et
+    r&#233;cepteur. Il consiste en :
+
+
+
+    <ul>
+      <li> Le sens cutan&#233; : c'est le sens du toucher. Il permet la perception de
+    la temp&#233;rature, de la pression ou de la douleur. Les r&#233;cepteurs
+    sensoriels sont situ&#233;s dans la peau.
+
+      </li>
+
+      <li>
+    Le sens kinesth&#233;sique : il permet de ressentir la position et les
+    mouvements du corps. Il nous permet par exemple de conna&#238;tre le
+    poids, la forme et la position d'un objet que nous sommes en train de
+    manipuler. Il est relay&#233; par des r&#233;cepteurs sensoriels situ&#233;s
+    dans les muscles, les tendons et les articulations.
+
+      </li>
+    </ul>
+
+    La manipulation d'un p&#233;riph&#233;rique de pointage &#224; retour de force,
+    comme une souris, est bas&#233;e sur la perception kinesth&#233;sique du
+    bras. Le sens cutan&#233; n'est pas stimul&#233;. Ainsi, dans notre approche,
+    il ne s'agit pas de ressentir une texture, mais de sentir les
+    emplacements que notre main a rep&#233;r&#233;s au cours de la manipulation
+    du p&#233;riph&#233;rique.
+
+
+    Gr&#226;ce &#224; la m&#233;moire sensorielle associ&#233;e &#224; notre perception
+    kinesth&#233;sique, nous pouvons nous repr&#233;senter mentalement les
+    positions des objets les uns par rapport aux autres (Figure 1). C'est
+    ce que nous appelons la  localisation relative.
+
+
+    <div class="figure">
+      <center>
+    <img src="./localisationRelative.png" alt="Figure 1: La localisation relative" width='400' height='232'>
+      </center>
+      <div>
+    <span>Figure 1: La localisation relative</span>
+      </div>
+     </div>
+
+
+    Coupl&#233;e &#224; un retour sonore sur chaque point aimant&#233;, cette
+    approche permettra la reconstruction d'une image mentale d'un objet &#224;
+    partir des &#233;l&#233;ments de cet objet.
+
+
+
+    <h2>Aspects techniques</h2>
+
+    <h3>La Souris &#224; Retour de Force</h3>
+
+    Nous utilisons la souris &#224; retour de force  Wingman
+    Force Feedback Mouse  cr&#233;&#233;e par Immersion
+    Corporation [7] et commercialis&#233;e par Logitech (Figure&nbsp;2).
+
+
+    <div class="figure">
+      <center>
+    <img src="./wingman.png" alt="Figure 2: La souris &#224; retour de force" width='165' height='139'>
+      </center>
+      <div>
+    <span>Figure 2: La souris &#224; retour de force</span>
+      </div>
+    </div>
+
+
+
+    La surface effective de travail est tr&#232;s petite : 1.9cm x 2.5cm et les
+    forces peuvent atteindre 1N. La Wingman a &#233;t&#233; originalement
+    cr&#233;&#233;e pour le jeu vid&#233;o, mais son utilisation a &#233;galement
+    &#233;t&#233; &#233;tudi&#233;e pour l'accessibilit&#233; [2][5][12][13].
+
+
+    La souris &#224; retour de force Wingman Force Feedback Mouse ne poss&#232;de
+    des pilotes que sous Windows. Le d&#233;veloppement d'un pilote sous linux
+    est envisageable en s'appuyant sur le pilote iForce qui permet
+    l'utilisation des joysticks &#224; retour de force du m&#234;me
+    constructeur.
+
+
+    Enfin, Immersion Corporation propose un plugin pour navigateur Internet
+    [6] donnant la possibilit&#233; de controler la souris via une
+    programmation javascript/Ecmascript contenue dans une page HTML. Ce
+    plugin existe pour Internet Explorer et Netscape 4. Une version pour
+    les navigateurs bas&#233;s sur le moteur Gecko (Netscape Navigator 7.x,
+    Mozilla 1.x et ses d&#233;riv&#233;s) existe aussi mais malheureusement pas
+    pour les versions r&#233;centes de ces navigateurs.
+
+
+
+    <h3>Le Format SVG</h3>
+
+    Nous basons le mode visuel sur le format SVG (Scalable Vector Graphic
+    [14]), qui est le format XML pour les images vectorielles. Un fichier
+    SVG est cod&#233; sous forme de fichier texte. Son contenu peut ainsi
+    &#234;tre index&#233; par les moteurs de recherche. Un ficher SVG peut de
+    plus &#234;tre g&#233;n&#233;r&#233; dynamiquement c&#244;t&#233; serveur via
+    l'utilisation des classes perl:SVG et c&#244;t&#233; client gr&#226;ce &#224; une
+    programmation javascript.
+
+
+    D'un autre c&#244;t&#233; le SVG supporte le DOM (Document Object Model) et
+    peut r&#233;agir aux &#233;v&#232;nements utilisateurs (onMouseOver par exemple
+    lorsque le pointeur de la souris passe au dessus d'une forme SVG).
+
+
+    Les formes d&#233;crites dans un fichier SVG sont d&#233;finies explicitement
+    par une liste de coordonn&#233;es. Ceci constitue un r&#233;el avantage
+    compar&#233; aux images bitmaps. Gr&#226;ce &#224; ses possibilit&#233;s, le SVG a
+    d&#233;j&#224; &#233;t&#233; utilis&#233; dans le cadre de l'accessibilit&#233; [2][5].
+
+
+    Pour l'affichage dans Internet Explorer nous utilisons le plugin Adobe
+    SVG Viewer [1]. Ce plugin est actuellement le plus avanc&#233; en terme de
+    respect des sp&#233;cifications SVG et du support du DOM. Nous suivons
+    &#233;galement l'initiative SVG du Mozilla Project [9] qui permettra &#224;
+    terme de se passer de l'utilisation d'un plugin externe mais qui pour
+    l'instant ne supporte pas toutes les sp&#233;cifications SVG.
+
+
+
+    <h3>Le Retour sonore</h3>
+
+    Pour le moment, nous utilisons des fichiers sons au format mp3
+    pr&#233;alablement enregistr&#233;s sur le serveur. La lecture
+    dun son est lanc&#233;e gr&#226;ce aux extensions SMIL du
+    plugin Adobe SVG Viewer. Il y a cependant une limitation importante :
+    on ne peut lire que 20 sons diff&#233;rents dans un fichier SVG. Les
+    sp&#233;cifications de la future version 1.2 du SVG sont maintenant
+    connues [15], et la balise audio y fait son
+    apparition. Ainsi, quand le SVG 1.2 sera normalis&#233;, il sera possible
+    de lire des fichiers mp3, ogg/Vorbis ou &nbsp;Wav, sans limitation de
+    nombre.
+
+
+    La classe perl:MIDI pourra &#233;galement &#234;tre utilis&#233;e pour
+    g&#233;n&#233;rer dynamiquement le retour sonore. La lecture de fichiers midi
+    dans un navigateur n&#233;cessite cependant l'utilisation d'un lecteur
+    multim&#233;dia de pr&#233;f&#233;rence int&#233;gr&#233; au navigateur.
+
+
+
+    <h3>Architecture</h3>
+
+    Nous avons opt&#233; pour un contexte d'applications WEB. Nous nous
+    appuyons donc sur un sch&#233;ma client-serveur classique (Figure 3).
+
+
+    Nous utilisons Apache comme serveur WEB. Nous disposons &#233;galement sur
+    le serveur des fichiers SVG et des fichiers sons. Comme vu plus haut,
+    une programmation c&#244;t&#233; serveur nous autorise &#233;galement la
+    g&#233;n&#233;ration d'autres fichiers SVG et sons.
+
+    <div class="figure">
+      <center>
+    <img src="./archi.png" alt="Figure 3: Architecture client-serveur de notre application" width='400' height='230'>
+      </center>
+      <div>
+    <span>Figure 3: Architecture client-serveur de notre application</span>
+      </div>
+    </div>
+
+
+    C&#244;t&#233; client, c'est le navigateur Internet Explorer de Microsoft qui
+    est utilis&#233;. C'est &#224; l'heure actuelle le seul choix possible comme
+    vu au dessus : support de l'Immersion Web Plugin. C'est enfin une
+    programmation Javascript qui contr&#244;le la souris.
+
+
+
+    <h2>Application : accessibilit&#233; &#224; l'Harmonie</h2>
+
+
+
+    <h3>La notation hexagonale</h3>
+
+    La notation hexagonale a &#233;t&#233; propos&#233;e par le musicologue
+    Jean-Marc Chouvel [3]. Il s'agit d'une repr&#233;sentation instantan&#233;e
+    de la musique comme on peut avoir sur un manche de guitare. Les notes
+    sont &nbsp;dispos&#233;es sur un damier hexagonal.
+
+
+    Par rapport &#224; la repr&#233;sentation originale de Jean-Marc Chouvel,
+    nous avons effectu&#233; une rotation de 60 degr&#233;s afin de conserver la
+    corr&#233;lation intuitive entre hauteur de la note et direction &#224;
+    l'&#233;cran : les mouvements vers le haut feront toujours monter le son
+    dans la gamme (Figure&nbsp;4).
+
+
+    Les principales caract&#233;ristiques de cette repr&#233;sentation sont
+    explicit&#233;es dans [8] :
+
+
+
+    <ul>
+      <li> L'axe vertical est compos&#233; de quintes majeures.
+
+      </li>
+
+      <li>
+    L'axe diagonal-droit est compos&#233; de tierces majeures.
+
+      </li>
+
+      <li>
+    L'axe diagonal-gauche est compos&#233; de tierces mineures.
+
+      </li>
+    </ul>
+
+   <div class="figure">
+      <center>
+    <img src="./representation.png" alt="Figure 4:  La repr&#233;sentation hexagonale" width='400' height='321'>
+      </center>
+      <div>
+    <span>Figure 4:  La repr&#233;sentation hexagonale</span>
+      </div>
+    </div>
+
+
+    La propri&#233;t&#233; la plus remarquable reste la suivante : Un accord
+    (plusieurs notes) est form&#233; par plusieurs hexagones. Si deux formes
+    sont identiques, on a le m&#234;me accord.
+
+
+    Enfin, les notes les plus rapides &#224; atteindre (au sens de la loi de
+    Fitts [4]) en partant d'un point sont les notes
+    proches  harmoniquement (les tierces mineures et
+    majeures et la quinte) : ce sont les notes voisines d'un hexagone.
+
+
+    Chaque hexagone est un interacteur ind&#233;pendant d&#233;fini &#224; partir de
+    sa description dans le fichier SVG, par sa note (jou&#233;e lorsque le
+    pointeur passer au dessus) et son retour de force (sch&#233;matis&#233; sur
+    la figure&nbsp;5).
+
+    <div class="figure">
+      <center>
+    <img src="./noteSeule.png" alt="Figure 5: Effet haptique pour une note" width='200' height='205'>
+      </center>
+      <div>
+    <span>Figure 5: Effet haptique pour une note</span>
+      </div>
+    </div>
+
+
+    Dans notre prototype, nous nous servons de la repr&#233;sentation
+    hexagonale pour pr&#233;senter les accords harmoniques les plus simples
+    &#224; l'utilisateur (Figure&nbsp;6). Chaque accord a donc une forme
+    sp&#233;cifique, quelque soit la tonalit&#233;.
+
+
+    A l'utilisation, un utilisateur non-voyant peut explorer librement le
+    damier d'hexagones. Ensuite, les touches du clavier permettent de
+    passer d'un accord &#224; l'autre. Dans cette configuration, l'utilisateur
+    n'explore plus que les notes de cet accord afin de d&#233;duire sa forme.
+    Par exemple un triangle isoc&#232;le pointant vers la droite est un accord
+    de quinte majeure.
+
+
+    <div class="figure">
+      <center>
+    <img src="./accords.png" alt="Figure 6: Les formes des accords" width='400' height='427'>
+      </center>
+      <div>
+    <span>Figure 6: Les formes des accords</span>
+      </div>
+    </div>
+
+
+
+    <h2>Perspectives et conclusion</h2>
+
+    Nous pr&#233;voyons d'utiliser cette approche &#224; d'autres domaines comme
+    lapprentissage de la g&#233;ographie ou de la
+    g&#233;ometrie. Nous mettons actuellement en place un protocole de test
+    pour &#233;valuer notre approche dans ces diff&#233;rents contextes
+    applicatifs et aupr&#232;s de diff&#233;rents publics : personnes
+    non-voyantes et voyantes, enfants et autistes.
+
+
+    Dans un premier temps, cependant, nous allons poursuivre le
+    d&#233;veloppement de notre prototype d&#233;di&#233; &#224; l'apprentissage de
+    l'harmonie, en proposant notamment la possibilit&#233; d'enregistrer sa
+    propre musique; la cr&#233;ation d'un accord pourra se faire par exemple
+    via une reconnaissance des gestes r&#233;alis&#233;s &#224; la souris.
+
+
+    Enfin, nous d&#233;veloppons actuellement une architecture orient&#233;e
+    enseignant-&#233;l&#232;ve . Elle devra
+    permettre &#224; l'enseignant de concevoir un interacteur visuel (SVG),
+    audio(mp3) et haptique en un minimum de temps. Enfin, le param&#233;trage
+    du comportement de cet interacteur pourra se faire en r&#233;ponse directe
+    aux remarques des utilisateurs lors des s&#233;ances de test.
+
+
+
+    <h3>BIBLIOGRAPHIE</h3>
+
+    <ol type="1">
+      <li> Adobe. <i>Adobe SVG Viewer.</i> Disponible &#224; l'adresse
+    <a href="http://www.adobe.com/svg/viewer/install/main.html">http://www.adobe.com/svg/viewer/install/main.html</a>,
+    2004.
+      </li>
+
+      <li>Campin, B., Brunet, L.L., McCurdy, W.A., Siekierska, E.M.
+    <i>Svg mapping for people with visual impairment.</i> In: <i>Proceedings of SVG Open 2003</i>, 2003.
+      </li>
+
+
+      <li>
+    Chouvel, J.M., Assayag, G., Cholleton, J.P. <i>La repr&#233;sentation
+      hexagonale toro&#239;dale, application &#224; l'analyse harmonique de la
+      musique d'Hermeto Pascoal.</i> Séminaire MaMux, 2002.
+      </li>
+
+      <li> Fitts, P.M. <i>The information capacity of the human motor system in controlling the amplitude of movement.</i> In <i>Journal of Experimental Psychology </i>vol. 47, 1954, pp. 381-391.
+      </li>
+
+      <li>
+    Gardner, J., Bulatov, V. <i>Smart figures, svg, and accessible web graphics</i>. In <i>Proceedings of Technology And Persons With Disabilities Conference 2001</i>, Los Angeles, 2001
+      </li>
+
+      <li>
+    Immersion : <i>Immersion Web Plugin</i>. Disponible &#224; l'adresse
+    <a href="http://www.immersion.com/plugins/">http://www.immersion.com/plugins/</a>,2002.
+      </li>
+
+      <li>
+    Immersion : <i>Touchsense Devices.</i> Disponible &#224; l'adresse
+    <a href="http://www.immersion.com/developer/technology/devices/index.php">http://www.immersion.com/developer/technology/devices/index.php</a>, 2003.
+      </li>
+
+      <li>
+    Mathieu, B. <i>Outils informatiques danalyse musicale.</i> Disponible &#224; l'adresse
+    <a href="http://www.ircam.fr/equipes/repmus/Rapports/mathieu2002/outils-analyse-BM-2002.pdf">http://www.ircam.fr/equipes/repmus/Rapports/mathieu2002/
+      outils-analyse-BM-2002.pdf.</a>,2002.
+      </li>
+
+      <li>
+    Mozilla : <i>SVG Project</i>. Disponible &#224; l'adresse
+    <a href="http://www.mozilla.org/projects/svg/">http://www.mozilla.org/projects/svg/</a>,2004.
+      </li>
+
+      <li>
+    Offen, D., Thomlinson, B. <i>Good vibrations: Using a tactile mouse to convey page layout information to visually impaired computer users</i>. In: <i>Proceedings of CSUN'S Sixteenth Annual International Conference: ``Technology and Persons with Disabilities''</i>, Los Angeles, 2001.
+      </li>
+
+      <li>
+    Revesz, G. <i>Psychology and art of the blind</i>. New York: Longmans, 1950.
+      </li>
+
+      <li>
+    Sile O'Modhrain, M., Guillepsie, R. <i>The moose: A haptic user interface for blind persons</i>. In: <i>Procedings of the Third WWW6 Conference</i>, Santa Clara, California, 1996.
+      </li>
+
+      <li>
+    Wies, E., Gardner, J., O'Modhrain, M., Hasser, C., Bulatov, V. <i>Web-based touch display for accessible science education</i>. In <i>Haptic Human-Computer Interaction</i> LNCS 2052, 2001, pp. 52-60.
+      </li>
+
+      <li>
+    World Wide Web Consortium (W3C).
+    <i>Scalable Vector Graphics &nbsp;(SVG) 1.1 Specifications</i>.
+    Disponible &#224; l'adresse
+    <a href="http://www.w3.org/TR/SVG">http://www.w3.org/TR/SVG</a>, 2001.
+      </li>
+
+      <li>
+    World Wide Web Consortium (W3C).
+    <i>Scalable Vector Graphics (SVG) 1.2. Working Draft Specifications.</i>
+    Disponible &#224; l'adresse
+    <a href="http://www.w3.org/TR/SVG12/">http://www.w3.org/TR/SVG12/</a>, 2004.
+      </li>
+
+      <li>
+    World Wide Web Consortium (W3C).
+    <i>Web Accessibility Initiative (WAI).</i>
+    Disponible &#224; l'adresse
+    <a href="http://www.w3.org/WAI/">http://www.w3.org/WAI/</a>, 2004.
+      </li>
+    </ol>
+<!-- GA -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32527212-2']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End GA -->
+
+    </body>
+</html>

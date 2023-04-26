@@ -1,0 +1,686 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../style.css" media="screen, print">
+
+    <style type="text/css">
+      <!-- td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}-->
+    </style>
+
+
+    <title> Use of Force Feedback Pointing Devices for Blind Users</title>
+
+  </head>
+
+
+  <body>
+
+    <h1>Use of Force Feedback Pointing Devices for Blind Users </h1>
+
+     <div class="author"> Bertrand Tornil and Nadine Baptiste-Jessel</div>
+    <div class="address">
+      <a href="http://www.irit.fr/">Institut de Recherche en Informatique de Toulouse</a><br>
+      Université Paul Sabatier - Toulouse 3<br>
+      31062 Toulouse Cedex, France <br>
+      <a href="mailto:bertrand.tornil@gmail.com">bertrand.tornil@gmail.com</a><br>
+    </div>
+
+
+
+<h2> Abstract</h2>
+    <p> In this paper, we discuss the possible uses, for a blind user, of force
+      feedback pointing devices, such as the mouse Wingman Force
+      Feedback Mouse and the PHANTOM,
+      associated with a sound feedback. We set the definitions of the gesture
+      interaction and propose the interaction loop relative to these
+      devices. Related works enable us to raise the limit of their use
+      and thus to specify within which framework they are adapted: the relative localization
+      of elements compared to the
+      others. The applications that we are developing are based on this context
+      of use. We present our application of geography which indicates the relative
+      positions of the areas on a map, via a
+      force feedback mouse and a voice synthesis. Lastly, we present the
+      prototype of our three-dimensional application which accounts for the
+      relative position of the human body elements. In order to
+      automate the treatment as much as possible, we based our applications
+      on data files in XML: the SVG for the geographical maps and the
+      X3D will be retained for the format of the forms in 3D.</p>
+
+
+    <b>Keywords: </b>accessibility, force feedback pointing devices, gestural interaction
+
+
+    <h2><a name="tth_sEc1">1</a>&nbsp;&nbsp;Introduction</h2>
+
+
+    In front of a computer, a blind user uses the keyboard to operate
+    the machine which answers him by a voice synthesis and/or a
+    braille display. The text processing is well adapted to these methods.
+    However, a graphic document will be presented to him by long
+    and tiresome descriptions. The force feedback devices are used
+    within the framework of the accessiblity for the blind users because
+    they authorize a more direct interaction based on sensory
+    capacities.
+
+
+    We first of all will set the main definitions of the
+    gestural interaction and will locate the perceptual mechanisms
+    needed in order to use these devices. We concentrate
+    here more specifically on force feedack pointing devices like the
+    mouse. While reviewing related works
+    within the framework of the accessibility for the blind users, as well
+    as the limits observed, we propose a specific context of use for these
+    devices: relative localization.
+
+
+    We present then two applications of the relative localization. In 2D,
+    it is a programme of reading of geographical maps which allows a
+    better accessibility for the blind men; and in 3D, our prototype makes
+    it possible to a blind man to deduce the position from a human body model
+    displayed on the screen. Lastly, we will conclude by presenting the
+    outlooks which we consider.
+
+
+    <h2><a name="tth_sEc2">2</a>&nbsp;&nbsp;The gestural interaction</h2>
+
+
+    We set the general standards which relate to the gestural interaction
+    between the user and the machine. A action-reaction loop (or
+    interaction loop) could then be defined in our applicative context.
+
+
+    <h3><a name="tth_sEc2.1">2.1</a>&nbsp;&nbsp;Human gesture</h3>
+
+
+    The tactilo-kinesthetic or " haptic" [<a href="#revesz" name="CITErevesz">Rev50</a>] system is the
+    synthesis of the movements of exploration of the motor system
+    and of perceptions of the tactile
+    system. The haptic sense is thus both
+    effector and receptor. [<a href="#lederman:haptic" name="CITElederman:haptic">LK87</a>] classified these two
+    aspects in the following way:
+    <ol>
+      <li>movements of exploration of the hand:
+        <ol>
+      <li> side friction (movement on both sides of
+        the surface of an object)
+      <li> envelopment
+      <li> the static contact (positioning of the palm of the hand
+        on the surface of an object)
+      <li> the following of contours
+      <li> the pressure (regular force applied to a given place of
+        the object)
+      <li> the rising of an object
+    </ol>
+      <li>sensory capacities related to the gestural modality:
+    <ol>
+      <li> the cutaneous sense: it is the touch sense. It allows
+        to feel the temperature, the pressure
+        or the pain, and is relayed by sensory receptors located under
+        the skin.
+      <li> the kinesthetic sense: it is the sense related on the
+        position and the movements of the body. It enables us for example to
+        know the weight of an object we're handling and its position. It
+        is relayed by receptors based in the muscles, the tendons and the
+        articulations.
+    </ol>
+    </ol>
+
+All these human capacities must
+have their equivalent on the machine, in order to accomplish the interaction
+loop. We will see further which sensory and explorative
+capacities are stimulated according to the devices that we use.
+
+
+     <h3><a name="tth_sEc2.2">2.2</a>&nbsp;&nbsp;Computer "gesture"</h3>
+
+
+There are numerous force feedback and/or tactile devices.
+
+
+In our study, we focused more specifically on the
+force feedback pointing devices. These devices handle
+only one pointer in the virtual space of the machine: the position of
+the device is then translated into a couple of coordinates  (<i>x</i>,<i>y</i>)  in 2D or a triplet  (<i>x</i>, <i>y</i>, <i>z</i>)  in 3D.
+
+
+The devices are the Wingman Force Feedback Mouse for
+the 2D and the PHANToM for the 3D.
+
+
+    <h4><a name="tth_sEc2.2.1">2.2.1</a>&nbsp;&nbsp;The Wingman Forces Feedback Mouse </h4>
+
+
+This force feedback mouse (figure <a href="#mouse">1</a>), was created by Immersion Corporation
+and marketed by Logitech.
+
+
+The mouse is interdependent of its
+base. The effective surface of work is of 1.9 X 2.5 cm and the forces
+can reach 1N in peak. The Wingman formely was a game
+device, but its use was diverted toward research
+on the accessibility.
+
+
+
+    <div class="figure">
+      <a name="mouse">
+      </a>
+      <center>
+    <img src="./wingman.png" alt="Figure 1: Wingman force feedback mouse" width='150' height='124'>
+      </center>
+      <div>
+    <span>Figure 1: Wingman force feedback mouse</span>
+      </div>
+    </div>
+
+
+
+
+
+    <h4><a name="tth_sEc2.2.2">2.2.2</a>&nbsp;&nbsp;The PHANTOM </h4>
+
+
+The PHANTOM (figure <a href="#phantom">2</a>) was created
+and is marketed by Sensable Technology. It is the most popular
+device in research on the haptic interaction. The volume of work
+is of 13 X 16 X 13cm and the force feedback can reach 8.5N.
+
+
+    <div class="figure">
+      <a name="phantom">
+      </a>
+      <center>
+    <img src="./phantom10.png" alt="Figure 2: the PHANTOM device" width='138' height='114'>
+      </center>
+      <div>
+    <span>Figure 2: The PHANTOM device</span>
+      </div>
+    </div>
+
+  <h3><a name="tth_sEc2.2">2.3</a>&nbsp;&nbsp;The interaction loop for the pointing</h3>
+
+
+The handling of these two pointing devices makes use of
+the movements of exploration of the arm. Articulations of the
+shoulder, the elbow and the wrist, and their associated muscles are
+thus implemented. The feedback operates on the same parts of the body.
+It is thus kinesthetic perception related to the arm via the shoulder,
+the elbow and the wrist which is requested.
+
+
+ <h2><a name="tth_sEc3">3</a>&nbsp;&nbsp;Force feedback for blind users</h2>
+
+
+    <h3><a name="tth_sEc3.1">3.1</a>&nbsp;&nbsp;Related Works</h3>
+
+
+The use of the force feeback for blind users aims to make up,
+as much as reasonably possible, for the absence of the visual
+channel. Several approaches exist.
+
+
+
+    <ol>
+
+
+
+      <li> Haptic feedback of a graphic interface. Thanks to force feedback mice,
+    [<a href="#ramstein96" name="CITEramstein96">Ram96</a>] and [<a href="#rosenberg" name="CITErosenberg">Ros97</a>] transcribed the
+    the graphic interactors of the interface in force feedback.
+
+      </li>
+
+      <li> Haptic feedback of the contents and the layout of a document. The
+    translation of mathematical figures or tables was studied by
+    [<a href="#fritz96" name="CITEfritz96">FB96</a>]. [<a href="#fritz99" name="CITEfritz99">FB99</a>] finally carried out a haptic system
+    of visualization based on the PHANToM for people with
+    visual handicap. [<a href="#offen" name="CITEoffen">OT01</a>] developed a programming library
+    making it possible to identify the layout of a document and to guide
+    the hand of the user on this document.
+
+      </li>
+
+      <li> Description of graphic documents. [<a href="#hardwick" name="CITEhardwick">HFR98</a>] studied the
+    possibilities of a force fedback on VRML (Virtual Reality Markup
+    Language), a 3D file format on the Web. [<a href="#gardner" name="CITEgardner">GB01</a>] used
+    the SVG (Scalable Vector Graphics) to enable blind users to read geographical
+    maps.
+
+      </li>
+
+      <li> Apprehension of shapes or textures. [<a href="#fritz96" name="CITEfritz96">FB96</a>] worked
+    on the synthesis of haptic textures. [<a href="#colwell98use" name="CITEcolwell98use">CPK<sup>+</sup>98</a>] used
+    the Impulse Engine 3000 to study perception by the blind users of textures
+    and virtual shapes. Finally [<a href="#yu01haptic" name="CITEyu01haptic">YRB01</a>] studied the
+    perception of mathematical graphics by blind users using the
+    PHANToM.
+
+
+
+
+      </li>
+    </ol>
+
+
+Moreover, [<a href="#dufresne" name="CITEdufresne">DMR95</a>] showed the interest of the audio-haptic
+bimodality for blind users. The table <a href="#tab1">1</a> indicates the
+percentage of good answers for three modal situations for 12 sighted users
+and 12 blind users.
+
+
+
+
+
+
+    <div class="figure">
+      <a name="tab1"></a>
+
+      <table border="0" align="left"><tr><td></td><td width="1000">
+          <center>
+        <table border="1">
+            <tr><td align="center"></td><td align="center">Blind Users: 12 </td><td align="center">Sighted Users: 12 </td><td align="center">Total:24</td></tr>
+            <tr><td align="center">Audio </td><td align="center">68 % </td><td align="center">62 % </td><td align="center">64 %</td></tr>
+            <tr><td align="center">Haptic </td><td align="center">78 % </td><td align="center">71 % </td><td align="center">74 %</td></tr>
+            <tr><td align="center">Bimodale </td><td align="center">83 % </td><td align="center">78 % </td><td align="center">80 %</td></tr>
+            <tr><td align="center">Total </td><td align="center">76 % </td><td align="center">70 % </td><td align="center">73 %</td></tr>
+        </table>
+
+          </center>
+      </table>
+
+      <div>
+    <span>Table 1: Bi-modal results</span>
+      </div>
+    </div>
+
+
+
+<h3><a name="tth_sEc3.2">3.2</a>&nbsp;&nbsp;Limits</h3>
+
+
+Limits were raised in the use of force feedback pointing devices
+for the blind users. As follows:
+
+
+
+    <ol>
+
+
+
+      <li> the use of these devices for the
+    perception of textures is inadequate, as pointed [<a href="#yu01haptic" name="CITEyu01haptic">YRB01</a>].
+    Indeed, the cutaneous perceptors of the skin are not stimulated.
+
+      </li>
+
+      <li> [<a href="#magnusson" name="CITEmagnusson">MRGSD02</a>] and [<a href="#colwell98use" name="CITEcolwell98use">CPK<sup>+</sup>98</a>] pointed that the
+    single contact point of the PHANToM does not allow
+    the recognition of a three-dimensional complex shape. The gestures of
+    envelopment of the hand would allow such a recognition, but that would
+    need a device activating the kinesthesic feedback on the fingers.
+
+
+
+
+      </li>
+    </ol>
+
+
+     <h3><a name="tth_sEc3.3">3.3</a>&nbsp;&nbsp;Relative localization</h3>
+
+
+    The use of force feedback pointing devices must be
+    based on the properties of the kinesthesic interaction of the arm.
+
+
+    Kinesthesic perception related to the arm enables us to visualize the
+    position of the hand in space. Thus, if an haptic event, like a
+    vibration or a shock, occurs during a move of the
+    arm, we can mentally represent the position that the hand had when
+    the event occurred.
+
+
+    Associated with a voice synthesis, this approach will allow the
+    rebuilding of a mental image of an object from the relative
+    positions of the elements of this object.
+
+
+    The two applications which we will present use the force feedback in
+    this context.
+
+
+    <h2><a name="tth_sEc4">4</a>&nbsp;&nbsp;Applications of the relative localization</h2>
+
+
+    <h3><a name="tth_sEc4.1">4.1</a>&nbsp;&nbsp;2D application: Géogr'Haptic</h3>
+
+
+    In this application, which run in a Internet browser, we
+    display a map indicating the American states. A blind user
+    handle the Wingman Force Feedback Mouse to
+    explore the surface of the screen. When the pointer of the mouse
+    passes on an area, it is "magnetized" toward its center. A
+    sound feedback gives the name of the state, via a screen reader
+    and a voice synthesis. The figure <a href="#geo1">3</a> illustrates this
+    operation.
+
+
+
+
+    <div class="figure">
+      <a name="geo1">
+      </a>
+      <center>
+    <img src="./figure1.png" alt="Figure 3: Geogr'Haptic, before the move" width='400' height='250'>
+      </center>
+      <div>
+    <span>Figure 3: Geogr'Haptic, before the move</span>
+      </div>
+    </div>
+
+
+
+    It is then necessary for the user to force his way out of
+    the area, and either:
+
+    <ol>
+
+      <li> to fall into a state bordering
+    and to hear the name of this state, as the figure <a href="#geo2">4</a> shows it;
+
+      </li>
+
+      <li> to leave the map, and then to feel an effect of texture.
+
+
+      </li>
+    </ol>
+
+
+    <div class="figure">
+      <a name="geo2">
+      </a>
+      <center>
+    <img src="./figure2.png" alt="Figure 4: Geogr'Haptic, after the move" width='400' height='249'>
+      </center>
+      <div>
+    <span>Figure 4: Geogr'Haptic, after the move</span>
+      </div>
+    </div>
+
+
+
+
+
+    The format of the map is the SVG [<a href="#svg" name="CITEsvg">SVG03</a>] which is the
+    implementation in XML of the vectorial pictures. The interest to use
+    this format is multiple:
+
+
+
+    <ol>
+
+
+
+      <li> its contents can
+    be indexed by the search engines on the Web.
+
+      </li>
+
+      <li> the SVG supports the DOM (Document Object Model) and
+    is therefore entirely scriptable. Geogr'Haptic is coded in
+    Javascript.
+
+      </li>
+
+      <li> graphics in SVG can react to the users events such as
+    onMouseOver() when the mouse passes on an area or onMouseClic() when
+    the user clicks.
+
+      </li>
+
+      <li> the SVG can be displayed perfectly on all platforms, all output
+    resolutions, with various bandwidths.
+
+
+      </li>
+    </ol>
+
+
+    The first tests which we carried out with blind users are
+    encouraging: they are able to quote the frontier states of Canada, or
+    which states one must cross to go from a point A to a point B, which
+    would not be possible by using traditional pictures on the Web.
+
+
+    <h3><a name="tth_sEc4.2">4.2</a>&nbsp;&nbsp;3D application</h3>
+
+
+    This application uses the same principle as géogr'Haptic
+    but in three dimensions thanks to the use of the
+    PHANToM. We plan to base the application on the
+    3D XML format: the X3D [<a href="#x3d" name="CITEx3d">X3D02</a>]. However, for the
+    prototype, we currently use the POSER file format
+    [<a href="#poser" name="CITEposer">Cur04</a>] which contains, like the X3D, some meta-datas.
+    The figure <a href="#human1">5</a> shows the prototype of the application after
+    the loading of a model of a human skeleton.
+
+
+
+
+    <div class="figure">
+      <a name="human1">
+      </a>
+      <center>
+    <img src="./body.png" alt="Figure 5: Body'Haptic" width='400' height='354'>
+      </center>
+      <div>
+    <span>Figure 5: Body'Haptic</span>
+      </div>
+    </div>
+
+
+
+    When we load the 3D model, the bounding boxes of each element are
+    computed. A 3D cursor moved by the
+    PHANToM allows to navigate into the 3D scene. A
+    force feedback then attracts the pointer in the center of the
+    nearest bounding box, while a voice synthesis reads the name of this
+    element.
+
+
+    Nowadays, our prototype allows to blind user to deduce
+    the 3D model position. For instance, on the figure <a href="#human1">5</a>
+    it is standing with the arms in cross.
+
+
+    <h2><a name="tth_sEc5">5</a>&nbsp;&nbsp;Outlooks</h2>
+
+
+    We should soon propose a test protocol which aims to confront our
+    prototypes with the existing tools of access to the graphic
+    documents for blind people.
+
+
+    The prototype of our 3D application is still in an early stage
+    development. For complex 3D models, our application will have
+    to filter informations to be handled by the force feedback
+    in instance to produce a scene with a good haptic
+    legibility.
+
+
+    We're going to use the XML 3D file format for the Web: the
+    X3D [<a href="#x3d" name="CITEx3d">X3D02</a>]. Just like the SVG, the X3D is
+    completely scriptable, and support the DOM, which enables us to
+    consider an exploitation in a Internet browser. Moreover its
+    specifications include the management of the objects displayed by
+    pointing devices.
+
+
+    We must also study adjustments of the force feedback, which would
+    be specific with the 3D model loaded: an effect could thus guide
+    the user hand along the elements and the effects could be
+    characteristic of the various parts of the body (the intensity of the
+    effect would be different if we are in a bone or in an organ).
+
+
+    This leads us to our last objective: we are about to build a 3D model of a
+    human body including the organs. The haptic reading of
+    such a model would be useful for blind and sighted users,
+    in a pedagogical context.
+
+
+    <h2><a name="tth_sEc6">6</a>&nbsp;&nbsp;Aknowlegdment</h2>
+
+
+    The authors would like to thank Frederic Gianni for providing
+    the handling libraries of POSER file, and for
+    its constant support.
+
+
+
+    <h2>References</h2>
+
+<dl compact="compact">
+ <dt><a href="#CITEcolwell98use" name="colwell98use">[CPK<sup>+</sup>98]</a></dt><dd>
+C.&nbsp;Colwell, H.&nbsp;Petrie, D.&nbsp;Kornbrot, A.&nbsp;Hardwick, and Furner S.
+ Use of a haptic device by blind and sighted people: perception of
+  virtual textures and objects.
+ In <em>Improving the quality of life for the European citizen:
+  technology for inclusive design and equality</em>. Amsterdam: IOS Press, i.
+  placencia-porrero and e. ballabio edition, 1998.
+
+
+</dd>
+ <dt><a href="#CITEposer" name="poser">[Cur04]</a></dt><dd>
+Curious Labs.
+ Poser 5.
+ <em>http://www.curiouslabs.com/</em>, 2004.
+
+
+</dd>
+ <dt><a href="#CITEdufresne" name="dufresne">[DMR95]</a></dt><dd>
+A.&nbsp;Dufresne, O/&nbsp;Martial, and C.&nbsp;Ramstein.
+ Multimodal user interface system for blind and 'visually occupied'
+  users: Ergonomic evaluation of the haptic and auditive dimensions.
+ In <em>Proceedings of IFIP International Conference Interaction'95,
+  Lillehammer, Norway</em>, pages 163-168, 1995.
+
+
+</dd>
+ <dt><a href="#CITEfritz96" name="fritz96">[FB96]</a></dt><dd>
+J.P. Fritz and K.E. Barner.
+ Design of haptic graphing method.
+ In <em>Proceedings of RESNA-96 Annual Conference, Salt Lake City,
+  USA</em>, pages 158-160, 1996.
+
+
+</dd>
+ <dt><a href="#CITEfritz99" name="fritz99">[FB99]</a></dt><dd>
+J.P. Fritz and K.E. Barner.
+ Design of a haptic visualisation system for people with visual
+  impairments.
+ In <em>IEEE Transactions on Rehabilitaion Engineering</em>, pages
+  372-384, 1999.
+
+
+</dd>
+ <dt><a href="#CITEgardner" name="gardner">[GB01]</a></dt><dd>
+J.A. Gardner and V.&nbsp;Bulatov.
+ Smart figures, svg, and accessible web graphics.
+ In <em>Proceedings of Technology And Persons With Disabilities
+  Conference 2001, Los Angeles</em>, 2001.
+
+
+</dd>
+ <dt><a href="#CITEhardwick" name="hardwick">[HFR98]</a></dt><dd>
+A.&nbsp;Hardwick, S.&nbsp;Further, and J.&nbsp;Rush.
+ Tacile display of virtual reality from the world wide web - a
+  potential access method for blind people.
+ <em>Display</em>, 18, Issue 3:151-161, 1998.
+
+
+</dd>
+ <dt><a href="#CITElederman:haptic" name="lederman:haptic">[LK87]</a></dt><dd>
+S.&nbsp;J. Lederman and R.&nbsp;L. Klatzky.
+ Haptic exploration in humans and machines: An initial overview.
+ Technical report, Office of Naval Research, 1987.
+
+
+</dd>
+ <dt><a href="#CITEmagnusson" name="magnusson">[MRGSD02]</a></dt><dd>
+C.&nbsp;Magnusson, K.&nbsp;Rassmus-Gröhn, C.&nbsp;Sjöström, and H.&nbsp;Danielsson.
+ Navigation and recognition in complex haptic environments - reports
+  from an extensive study with blind users.
+ <em>Présenté à EuroHaptics, Edinburgh, UK, July 8-10</em>, 2002.
+
+
+</dd>
+ <dt><a href="#CITEoffen" name="offen">[OT01]</a></dt><dd>
+D.&nbsp;Offen and B.&nbsp;Thomlinson.
+ Good vibrations: Using a tactile mouse to convey page layout
+  information to visually impaired computer users.
+ In <em>Proceedings of CSUN'S Sixteenth Annual International
+  Conference :"Technology and Persons with Disabilities", Los Angeles</em>, 2001.
+
+
+</dd>
+ <dt><a href="#CITEramstein96" name="ramstein96">[Ram96]</a></dt><dd>
+C.&nbsp;Ramstein.
+ Combining Hpatic and Braille Technologies, Design Issues and Pilot
+  Study.
+ In <em>ASSET'96, ACM/SIGCAPH. In 2nd Annual ACM Conference on
+  Assistive Technologies, Vancouver, BC, Canada</em>, pages 37-44, 1996.
+
+
+</dd>
+ <dt><a href="#CITErevesz" name="revesz">[Rev50]</a></dt><dd>
+G.&nbsp;Revesz.
+ <em>Psychology an art of the blind</em>.
+ New York: Longmans, 1950.
+
+
+</dd>
+ <dt><a href="#CITErosenberg" name="rosenberg">[Ros97]</a></dt><dd>
+L.&nbsp;Rosenberg.
+ Feelit mouse: Adding a realistic sense of feel to the computing
+  experience, 1997.
+
+
+</dd>
+ <dt><a href="#CITEsvg" name="svg">[SVG03]</a></dt><dd>
+SVG.
+ Scalable vector graphics (svg) 1.1 specification.
+ <em>http://www.w3.org/TR/SVG/</em>, 2003.
+
+
+</dd>
+ <dt><a href="#CITEx3d" name="x3d">[X3D02]</a></dt><dd>
+X3D.
+ X3d working group overview.
+ <em>http://www.web3d.org/x3d.html</em>, 2002.
+
+
+</dd>
+ <dt><a href="#CITEyu01haptic" name="yu01haptic">[YRB01]</a></dt><dd>
+Wai Yu, Ramesh Ramloll, and Stephen Brewster.
+ Haptic graphs for blind computer users.
+ <em>Lecture Notes in Computer Science</em>, 2058:41-??, 2001.</dd>
+</dl>
+<!-- GA -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32527212-2']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End GA -->
+
+  </body>
+</html>

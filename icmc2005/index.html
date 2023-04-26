@@ -1,0 +1,632 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <link rel="stylesheet" type="text/css" href="../style.css" media="screen, print">
+    <style type="text/css">
+      <!-- td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;} --></style>
+
+
+    <title> Music Haptic : Musical Harmony Notions for All with A Force Feedback Mouse And A Spatial Representation</title>
+    </head>
+
+  <body>
+    <h1>Music Haptic : Musical Harmony Notions for All with A Force Feedback Mouse And A Spatial Representation </h1>
+
+    <div class="author"> Bertrand Tornil and Nadine Baptiste-Jessel</div>
+    <div class="address">
+      <a href="http://www.irit.fr/">Institut de Recherche en Informatique de Toulouse</a><br>
+      Université Paul Sabatier - Toulouse 3<br>
+      31062 Toulouse Cedex, France <br>
+      <a href="mailto:bertrand.tornil@gmail.com">bertrand.tornil@gmail.com</a><br>
+    </div>
+
+
+
+
+
+    <h2> Abstract</h2>
+    This paper describes Music Haptic, an application which enables users (especially blind
+    users) to train of musical harmony notions due to a spatial
+    representation and a force feedback mouse. This mouse enables the
+    progressive rebuilding of the mental image of a graphical document
+    through knowing the positions of its elements. We present technical
+    context of our prototype and the possible alternatives. Then, we
+    describe our prototype and discuss directions for future research.
+
+
+
+
+    <h2><a name="tth_sEc1">
+    1</a>&nbsp;&nbsp;Introduction</h2>
+
+
+    With their capabilities, computers have often been used in musical
+    education. Several approach exists in this research
+    field : graphical visualization [<a href="#Holland1987" name="CITEHolland1987">8</a>] [<a href="#Castaing2004" name="CITECastaing2004">4</a>],
+    artificial intelligence [<a href="#Holland1999" name="CITEHolland1999">9</a>], computer musical analysis
+    and composition [<a href="#Brandao1999" name="CITEBrandao1999">2</a>].However, these approaches often forget users
+    with visual disabilities.
+
+
+    In a traditional situation, a blind user or a low vision user uses
+    a keyboard to interact with a computer. The computer answers him via
+    a voice synthesis and/or a braille display. This method
+    is completely adapted to the access to textual documents. With
+    graphical information, a textual description may be proposed. However,
+    the problem persists on the one hand because these descriptions are not
+    always present, and on the other hand because textual
+    descriptions can quickly prove to be long and tiresome to consult.
+
+
+    Accessibility to the music notation for blind users is based on linear
+    transcription of musical data into braille notation [<a href="#bme" name="CITEbme">1</a>] [<a href="#toccata" name="CITEtoccata">17</a>]. It implies
+    knowledge in musical and harmonical notions, and the comprehension of
+    the Braille.
+
+
+    The use of force feedback devices was thus studied in accessibility
+    research [<a href="#Burdea1996" name="CITEBurdea1996">3</a>] [<a href="#Colwell1998" name="CITEColwell1998">5</a>] [<a href="#offen" name="CITEoffen">13</a>]
+    [<a href="#ramstein96etal" name="CITEramstein96etal">14</a>] [<a href="#wies" name="CITEwies">19</a>]. Indeed, these peripherals authorize
+    a more direct interaction based on the sensory capacities.
+
+
+    Music Haptic uses a force feedback mouse in order to present some
+    harmonic informations. First of all, thus, we present how we
+    use the force feedback modality : we propose the concept of "relative
+    localization". Then we present the Steedman musical representation
+    which enables us to use the relative localization for harmony
+    training. In the next part, we describe the architecture which we
+    retained for our prototype. Then, we present the features of Music
+    Haptic at its stage of development. Finally we will finish
+    by presenting the research orientations which we consider for the future.
+
+
+
+
+    <h2><a name="tth_sEc2">
+    2</a>&nbsp;&nbsp;Haptic interaction</h2>
+
+
+    <h3><a name="tth_sEc2.1">
+    2.1</a>&nbsp;&nbsp;The force feedback mouse</h3>
+
+
+    We use the "Wingman Force Feedback Mouse" (Figure&nbsp;<a href="#fig:mouse">1</a>) created by
+    Immersion Corporation [<a href="#immersion" name="CITEimmersion">10</a>] and marketed by
+    Logitech.
+
+
+    The handling surface of this mouse is small : 1.9cm by 2.5cm. Forces
+    can reach up 1N. Originally, Wingman mouse was conceived for
+    video-games. However, some research in accessibility [<a href="#yu2001" name="CITEyu2001">20</a>]
+    [<a href="#gardner" name="CITEgardner">7</a>] have used this device.
+
+
+    <a name="tth_fIg1">
+    </a>
+    <div class="figure">
+      <a name="fig:mouse">
+      </a>
+      <center>
+    <img src="./wingman.png" alt="Figure 1: Wingman force feedback mouse" width='165' height='139'>
+      </center>
+      <div>
+    <span>Figure 1: Wingman force feedback mouse</span>
+      </div>
+    </div>
+
+
+
+    Immersion Corporation proposes a plug-in for Internet Explorer. The plug-in give the possibility of
+    controlling the mouse via javascript programming.
+
+
+     <h3><a name="tth_sEc2.2">
+    2.2</a>&nbsp;&nbsp;Haptic perception with a force feedback mouse</h3>
+    Tactilo-kinesthetic or "haptic" system [<a href="#revesz" name="CITErevesz">15</a>] consists of :
+
+
+
+    <ul>
+      <li> cutaneous perception : it allows the perception of the
+    temperature, the pressure or the pain. The sensory receptors are
+    located under the skin.
+
+      </li>
+
+      <li> The kinesthetic perception: it makes it possible to feel the position
+    and the movements of the body. For instance, it enables us to know the
+    weight, the shape and the position of an object which we are handling.
+    It is relayed by sensory receptors located in the muscles and the tendons[<a href="#Burdea1996" name="CITEBurdea1996">3</a>]
+
+      </li>
+    </ul>
+
+
+    The handling of a force feedback pointing device, as a
+    mouse, is based on the kinesthetic perception of the arm and the hand.
+    The cutaneous perception is not stimulated. Thus, in our approach, it
+    is not question of feeling a texture, but of perceiving the places where our
+    hand is located during the handling of the mouse.
+
+
+    <h3><a name="tth_sEc2.3">
+    2.3</a>&nbsp;&nbsp;Relative localization</h3>
+
+
+    Due to the sensory memory associated with our kinesthetic
+    perception, we can mentally represent the positions of
+    the objects. It is what we call the "relative localization".
+    For instance, in the figure&nbsp;<a href="#fig:localization">2</a>,a blind user will
+    recognize the relative disposition of some french counties on a map
+    (top example); or, on the bottom example, he will know where the left
+    arm of the skeleton is.
+
+
+
+
+    <a name="tth_fIg2">
+    </a>
+    <div class="figure">
+      <a name="fig:localization">
+      </a>
+      <center>
+    <img src="./relativeLocalization.png" alt="Figure 2: Relative localization" width='400' height='190'>
+      </center>
+      <div>
+    <span>Figure 2: Relative localization</span>
+      </div>
+    </div>
+
+
+
+    Coupled to an audio feedback, this approach
+    will enable blind users to rebuild a mental image of an object starting from
+    the elements of this object. [<a href="#tornil2004" name="CITEtornil2004">18</a>]
+
+
+    We present now how to apply this approach to the music learning field.
+
+
+
+
+    <h2><a name="tth_sEc3">
+    3</a>&nbsp;&nbsp;Seedman representation</h2>
+
+
+    In order to use the same approach for music, we need a spatial
+    representation of musical data.
+    All of the intervals in tonal music can be represented as
+    combinations of the fundamental intervals the octave, the
+    perfect fifth and the major third [<a href="#Longuet-Higgins1962" name="CITELonguet-Higgins1962">11</a>] et
+    [<a href="#Longuet-Higgins1962a" name="CITELonguet-Higgins1962a">12</a>]. This creates a three dimensional harmonic representation
+    although in practice we can represent the space of notes in two
+    dimensions by collapsing the octave dimension into a single layer
+    (Figure&nbsp;<a href="#fig:higgins">3</a>).
+
+
+    There is a further enhancement to this space that can be made and this
+    was proposed by Mark Steedman [<a href="#steedman1972" name="CITEsteedman1972">16</a>]. We can
+    offset the rows of the space by half units to create a space that
+    allows any particular note to have six adjacent members arranged
+    hexagonally (Figure&nbsp;<a href="#fig:higgins">3</a>).
+
+
+
+
+    <a name="tth_fIg3">
+    </a>
+    <div class="figure">
+      <a name="fig:higgins">
+      </a>
+      <center>
+    <img src="./higinsSteedman.png" alt="Figure 3: Longuet-Higgins (left) and Steedman (right) harmony representation" width='400' height='147'>
+      </center>
+      <div>
+    <span>Figure 3: Longuet-Higgins (left) and Steedman (right) harmony representation</span>
+      </div>
+    </div>
+
+
+
+    We have chosen this representation because the 6 neighboring notes of
+    an hexagon are equidistant from the original note. The Fitts law
+    [<a href="#fitts:54" name="CITEfitts:54">6</a>] give an equal movement time to access to these 6
+    neighborhood hexagons. Moreover, these 6 notes may be considered as the
+    "most harmonically closed" notes: minor and major thirds, and perfect fifth.
+
+
+    Compared to the original representation, we
+    carried out a rotation of 60 degrees in order to preserve
+    the intuitive correlation between pitch height of the note and direction at
+    the screen: the movements toward the bottom of the screen will always make the sound to go
+    up (Figure&nbsp;<a href="#fig:steedman">4</a>).
+
+
+    The main characteristics of this representation are :
+
+    <ul>
+      <li> vertical axis consists of perfect fifths;
+
+      </li>
+
+      <li> axis diagonal-right consists of major thirds; and
+
+      </li>
+
+      <li> axis diagonal-left consists of minor thirds.
+
+      </li>
+    </ul>
+
+
+
+
+    <a name="tth_fIg4">
+    </a>
+    <div class="figure">
+      <a name="fig:steedman">
+      </a>
+      <center>
+    <img src="./steedman.png" alt="Figure 4: Steedman representation" width='400' height='316'>
+      </center>
+      <div>
+    <span>Figure 4: Steedman representation</span>
+      </div>
+    </div>
+
+
+
+    The most important property is the following one: a chord
+    consist of several connected hexagons which represent a specific
+    shape, whatever the tonality. The figure&nbsp;<a href="#fig:chords">5</a> shows the
+    shapes of the implemented chords.
+
+
+
+
+    <a name="tth_fIg5">
+    </a>
+    <div class="figure">
+      <a name="fig:chords">
+      </a>
+      <center>
+    <img src="./chords.png" alt="Figure 5: Implemented chords" width='400' height='217'>
+      </center>
+      <div>
+    <span>Figure 5: Implemented chords</span>
+      </div>
+    </div>
+
+
+    Due to this property, a blind user (and even a sighter user) only have
+    to learn a chord specific shape, in order to recognize it. Compared
+    with the traditional musical notation, this is a advantage in a
+    training task.
+
+
+    For instance, a diminished 7<sup>th</sup> in E and in F\flat are shown on
+    figure&nbsp;<a href="#fig:trad1">6</a>. Chords shapes are different, alterations are
+    different, but it is the same chord. With the Steedman representation, the diminished 7<sup>th</sup>
+    chord consists of four hexagons, whatever the scale.
+
+
+
+
+    <a name="tth_fIg6">
+    </a>
+    <div class="figure">
+      <a name="fig:trad1">
+      </a>
+      <center>
+    <img src="./trad1.png" alt="Figure 6: Different shapes in traditional notation; the same chord in Steedman representation" width='400' height='273'>
+      </center>
+      <div>
+    <span>Figure 6: Different shapes in traditional notation; the same chord in Steedman representation</span>
+      </div>
+    </div>
+
+    Moreover, if two chords, in traditional musical notation, seems to have
+    the same "shape", their nature may be different. For instance, on the
+    figure&nbsp;<a href="#fig:trad2">7</a>, the two chords are similar. But, in fact, one is a in major mode,
+    while the other is in minor mode. The Steedman representation distinguishes
+    a minor triad chord from a major triad chord, whatever the scale, due to the
+    orientation of a isosceles triangle : left-oriented
+    for a major triad and right oriented for a minor triad.
+
+    <a name="tth_fIg7">
+    </a>
+    <div class="figure">
+      <a name="fig:trad2">
+      </a>
+      <center>
+    <img src="./trad2.png" alt="Figure 7. Same shape in traditional notation, but F Major on the left and E Minor on the right" width='400' height='304'>
+      </center>
+      <div>
+    <span>Figure 7: Same shape in traditional notation, but F Major on the left and E Minor on the right</span>
+      </div>
+    </div>
+
+
+
+    <h2><a name="tth_sEc4">
+    4</a>&nbsp;&nbsp;Music Haptic : technical aspects</h2>
+
+
+    We have chosen a WEB applications context. We have
+    based our prototype on a client-server architecture.
+
+
+    On the server side, we use Apache Web server. On the client side, we
+    use Microsoft  Internet Explorer. Nowadays, it is the
+    only browser which support the Immersion Web Plug-in.
+
+
+    The figure&nbsp;<a href="#fig:organisation">8</a> shows how our system works.
+
+
+
+
+    <a name="tth_fIg8">
+    </a>
+    <div class="figure">
+      <a name="fig:organisation">
+      </a>
+      <center>
+    <img src="./organisation.png" alt="Figure 8: overview of the system" width='400' height='302'>
+      </center>
+      <div>
+    <span>Figure 8: overview of the system</span>
+      </div>
+    </div>
+
+
+
+    <h2><a name="tth_sEc5">
+    5</a>&nbsp;&nbsp;Music Haptic : features of our prototype</h2>
+
+
+    In our prototype, we use the Steedman representation in order to
+    present the different chords to the user.
+
+
+    Two mode are available : Exploration mode and chord mode. In
+    exploration mode, the user can freely explore the checkerwork of
+    hexagons. Each note is "displayed" with a force feedback
+    (Figure&nbsp;<a href="#fig:note">9</a>) and the note is played in the same time.
+
+    <a name="tth_fIg9">
+    </a>
+    <div class="figure">
+      <a name="fig:note">
+      </a>
+      <center>
+    <img src="./noteSeule.png" alt="Figure 9: one note and its force feedback" width='200' height='205'>
+      </center>
+      <div>
+    <span>Figure 9: one note and its force feedback</span>
+      </div>
+    </div>
+
+
+    Keyboard enable to switch in the different chord mode (major and
+    minor triad, augmented triad, and so on ; see figure&nbsp;<a href="#fig:chords">5</a>). In
+    this configuration, the user only explores the notes of this chord. This
+    mode enables a blind user to learn the specific shape of a chord. For
+    example a right oriented isosceles triangle is a major triad chord
+    (Figure&nbsp;<a href="#fig:hapticChord">10</a>).
+
+
+    The last feature enable a sighted user to ask for the traditional
+    musical notation of the chord. Information sharing between sight and
+    blind user is easier thank to this feature.
+
+
+    <a name="tth_fIg10">
+    </a>
+    <div class="figure">
+      <a name="fig:hapticChord">
+      </a>
+      <center>
+    <img src="./hapticChord.png" alt="Figure 10: Major triad : force feedback hexagonal display and traditional  notation dynamically generated" width='400' height='154'>
+      </center>
+      <div>
+    <span>Figure 10: Major triad : force feedback hexagonal display and traditional
+  notation dynamically generated</span>
+      </div>
+    </div>
+
+
+
+
+
+    <h2><a name="tth_sEc6">
+    6</a>&nbsp;&nbsp;Outlooks and conclusion</h2>
+
+
+    We currently set up a test protocol to evaluate our approach near
+    different public : blind people, children and autists. The first blind
+    user feedbacks we got was encouraging.
+    We will also continue the development of our prototype
+    dedicated to the training of the harmony. In particular we will propose
+    the possibility of recording its own music; the creation of a chord
+    could be done for example via a gesture recognition with the
+    mouse.
+
+
+
+
+
+<h2>References</h2>
+
+<dl compact="compact">
+ <dt><a href="#CITEbme" name="bme">[1]</a></dt><dd>
+ Braille Music Editor.
+ web site at : http://www.dodiesis.com/.
+
+
+</dd>
+ <dt><a href="#CITEBrandao1999" name="Brandao1999">[2]</a></dt><dd>
+ Brandao, P. .&nbsp;W.
+ Computers in music education.
+ In <em>Proceedings of the AISB'99 Symposium on Musical
+  Creativity, </em> (1999), AISB.
+
+
+</dd>
+ <dt><a href="#CITEBurdea1996" name="Burdea1996">[3]</a></dt><dd>
+ Burdea, G.
+ <em>Force and touch feedback for virtual reality</em>.
+ Wiley-Interscience; 1 edition (August 3, 1996), 1996.
+
+
+</dd>
+ <dt><a href="#CITECastaing2004" name="Castaing2004">[4]</a></dt><dd>
+ Castaing, J.
+ Musicdraw : to make music learning attractive.
+ In <em>Forth MUSICNETWORk Open Workshop :
+  http://www.interactivemusicnetwork.org/ </em> (Barcelona, Spain, September
+  2004), Universitat Pompeu Fabra.
+
+
+</dd>
+ <dt><a href="#CITEColwell1998" name="Colwell1998">[5]</a></dt><dd>
+ Colwell, C.
+ Haptic virtual reality for blind computer users.
+ In <em>Proceedings of ASSETS'98, Third International Conference on
+  Assistive Technologies </em> (1998), pp.&nbsp;92-99.
+
+
+</dd>
+ <dt><a href="#CITEfitts:54" name="fitts:54">[6]</a></dt><dd>
+ Fitts, P.
+ The information capacity of the human motor system in controlling the
+  amplitude of movement.
+ <em>Journal of Experimental Psychology 47 </em> (1954), 381-391.
+
+
+</dd>
+ <dt><a href="#CITEgardner" name="gardner">[7]</a></dt><dd>
+ Gardner, J.&nbsp;A., and Bulatov, V.
+ Smart figures, svg, and accessible web graphics.
+ In <em>Proceedings of Technology And Persons With Disabilities
+  Conference 2001, Los Angeles </em> (2001).
+
+
+</dd>
+ <dt><a href="#CITEHolland1987" name="Holland1987">[8]</a></dt><dd>
+ Holland, S.
+ Direct manipulation tools for novices based on new cognitive theories
+  of harmony.
+ In <em>Proceedings of 1987 International Computer Music
+  Conference </em> (1987), pp.&nbsp;182 -189.
+
+
+</dd>
+ <dt><a href="#CITEHolland1999" name="Holland1999">[9]</a></dt><dd>
+ Holland, S.
+ Artificial intelligence in music education: a critical review.
+ In <em>Readings in Music and Aritficial Intelligence, Contemporary
+  Music Studies</em>, E.&nbsp;Miranda, Ed., vol.&nbsp;20. Harwood Academic Publishers, The
+  Netherlands, 1999.
+
+
+</dd>
+ <dt><a href="#CITEimmersion" name="immersion">[10]</a></dt><dd>
+ Immersion Corporation.
+ web site at : http://www.immersion.com, 2005.
+
+
+</dd>
+ <dt><a href="#CITELonguet-Higgins1962" name="Longuet-Higgins1962">[11]</a></dt><dd>
+ Longuet-Higgins, H.
+ Letter to a musical friend.
+ <em>Music Review </em> (August 1962), 244-248.
+
+
+</dd>
+ <dt><a href="#CITELonguet-Higgins1962a" name="Longuet-Higgins1962a">[12]</a></dt><dd>
+ Longuet-Higgins, H.
+ Second letter to a musical friend.
+ <em>Music Review </em> (Nov. 1962).
+
+
+</dd>
+ <dt><a href="#CITEoffen" name="offen">[13]</a></dt><dd>
+ Offen, D., and Thomlinson, B.
+ Good vibrations: Using a tactile mouse to convey page layout
+  information to visually impaired computer users.
+ In <em>Proceedings of CSUN'S Sixteenth Annual International
+  Conference :"Technology and Persons with Disabilities", Los Angeles </em>
+  (2001).
+
+
+</dd>
+ <dt><a href="#CITEramstein96etal" name="ramstein96etal">[14]</a></dt><dd>
+ Ramstein, C., Martial, O., Dufresne, A., Carignan, M., Chassé, P., and P.,
+  M.
+ Touching and Hearing GUIs: Design issues for the PC-Access System.
+ In <em>ASSET'96, ACM/SIGCAPH. In 2nd Annual ACM Conference on
+  Assistive Technologies, Vancouver, BC, Canada </em> (1996), pp.&nbsp;2-9.
+
+
+</dd>
+ <dt><a href="#CITErevesz" name="revesz">[15]</a></dt><dd>
+ Revesz, G.
+ <em>Psychology and art of the blind</em>.
+ New York: Longmans, 1950.
+
+
+</dd>
+ <dt><a href="#CITEsteedman1972" name="steedman1972">[16]</a></dt><dd>
+ Steedman, M.
+ <em>The formal description of musical perception</em>.
+ Unpublished phd, University of Edinburgh, University of Edinburgh,
+  1972.
+
+
+</dd>
+ <dt><a href="#CITEtoccata" name="toccata">[17]</a></dt><dd>
+ Toccata.
+ Optek systems. web site at :
+  http://members.optusnet.com.au/&nbsp;terryk/toccata.htm.
+
+
+</dd>
+ <dt><a href="#CITEtornil2004" name="tornil2004">[18]</a></dt><dd>
+ Tornil, B., and Baptiste-Jessel, N.
+ Use of force feedback pointing devices for blind users.
+ In <em>User Interfaces for All </em> (2004), pp.&nbsp;479-486.
+
+
+</dd>
+ <dt><a href="#CITEwies" name="wies">[19]</a></dt><dd>
+ Wies, E.&nbsp;F., and al.
+ Web-based touch display for accessible science education.
+ In <em>Haptic Human-Computer Interaction </em> (2001), pp.&nbsp;52-60.
+
+
+</dd>
+ <dt><a href="#CITEyu2001" name="yu2001">[20]</a></dt><dd>
+ Yu, W., Ramloll, R., and Brewster, S.
+ Haptic graphs for blind computer users.
+ <em>Lecture Notes in Computer Science 2058 </em> (2001), 41-49.</dd>
+</dl>
+<!-- GA -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32527212-2']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End GA -->
+    </body>
+</html>

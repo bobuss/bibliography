@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:bibtex="http://bibtexml.sf.net/">
+  <rdf:Description rdf:about="#Baptiste-Jessel2004">
+    <dc:title>Using SVG and a Force Feedback Mouse to Enable Blind People to Access Graphical Web Based Documents</dc:title>
+    <dc:creator>Nadine Baptiste-Jessel and Bertrand Tornil</dc:creator>
+    <dc:date>2004</dc:date>
+    <dc:source>9th International Conference on Computers Helping People with Special Needs, Paris</dc:source>
+    <dc:description>We present a system that enables a blind user to access 2D WEB based graphical documents. After introducing the SVG format and the Force Feedback Mouse, we present how, in a WEB browser application, we associate force, voice and sound feedback. Our approach is applied with two kinds of graphical information: geographical and musical information. In both application, after a training phase of the mouse handling, the user can make his own mental construction of displayed data. When the user knows the relative position of di?erent elements, he can move the mouse pointer towards the region he wants.</dc:description>
+    <dc:identifier rdf:resource="http://bobuss.free.fr/pro/maBiblio/icchp2004/icchp2004.html"/>
+    <dc:type>inproceedings</dc:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Jessel2002">
+    <dc:title>BME Braille Music Editor : une solution pour l'accessibilité de l'information musicale par les non-voyants, Paris</dc:title>
+    <dc:creator>Nadine Jessel and Bertrand Tornil and Benoit Encelle</dc:creator>
+    <dc:date>2002</dc:date>
+    <dc:source>Journée thématique BrailleNet 2002 : Livres et Cartables électroniques pour l'intégration scolaire des jeunes handicapés visuels, Paris (FRANCE)</dc:source>
+    <dc:description>Le logiciel BME (conçu et réalisé dans le cadre du projet européen PLAY2 ) est un éditeur de Braille musical permettant à un non voyant de saisir, modifier, gérer des partitions musicales en Braille. A l'aide d'un lecteur d'écran et d'une plage tactile, le musicien non voyant peut avoir accès à sa production ou à des partitions importées dans l'éditeur dans des formats reconnaissables. La première partie de cet article est consacrée aux constats ayant servis à la conception d'un tel système en décrivant tout d'abord les caractéristiques des utilisateurs potentiels ainsi que les freins techniques ou technologiques à prendre en compte. La deuxième partie sera consacrée à l'étude des différentes solutions proposées au travers de différents projets et dans la dernière partie les fonctionnalités du logiciel BME seront décrites en détail.</dc:description>
+    <dc:type>inproceedings</dc:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Langolff2001">
+    <dc:title>MFB (Music For the Blind): automatic transcription and creation of musical scores into Braille</dc:title>
+    <dc:creator>Didier Langolff and Nadine Jessel and Dany Levy and Bertrand Tornil</dc:creator>
+    <dc:date>2001</dc:date>
+    <dc:source>6th European Conference for the advancement of assistive technology , Ljubljana, Slovenie</dc:source>
+    <dc:description>To realise a software able to transcribe musical scores in Braille automatically and to provide solutions to problems encountered to make this software accessible to the blind.</dc:description>
+    <dc:subject>Braille, Music, blind</dc:subject>
+    <dc:type>inproceedings</dc:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Tornil2001">
+    <dc:title>Utilisation d'une souris à retour de force pour présenter des documents géographiques à des non-voyants</dc:title>
+    <dc:creator>Bertrand Tornil and Nadine Baptiste-Jessel</dc:creator>
+    <dc:date>2001</dc:date>
+    <dc:source>IHM-HCI'2001, Lille</dc:source>
+    <dc:description>Cet article présente une application qui, grâce à l'utilisation d'une souris à retour d'effort, et à un lecteur d'écran, permet à un utilisateur non-voyant d'appréhender l'information contenue sur des cartes géographiques, présentées sous un format web : les images réactives du HTML, et le nouveau format d'images vectorielles pour Internet : le SVG (Scalable Vector Graphics). Au final, nos testeurs non-voyants ont souligné l'intérêt pédagogique du dispositif.</dc:description>
+    <dc:type>inproceedings</dc:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Tornil2001a">
+    <dc:title>Geogr'Haptic: Using SVG and a force feedback mouse to enable blind people to access geographic web based document</dc:title>
+    <dc:creator>Bertrand Tornil and Nadine Baptiste-Jessel</dc:creator>
+    <dc:date>2001</dc:date>
+    <dc:source>HCI International 2001: 9th International Conference on Human-Computer Interaction, New-Orleans, USA</dc:source>
+    <dc:description>In this poster, we present a system that enables to a blind user, to access geographic documents on the Internet.In our application, we display a map of the USA, showing the states. A blind user uses a force feedback mouse to explore the surface of the screen. When the pointer of the mouse passes on a state, it is "magnetized" towards the centre of this one. A sound feedback gives the name of the state, via a screen reader and a voice synthesis. We tested our application with two blind users. After a training phase of the mouse handling, they both have recognized the interest of our application, letting them to answer a question like "What are the states border of Kansas ?" . Then, they can make their own mental construction of the map, and as they know their position, they can move the mouse pointer towards the state they want.</dc:description>
+    <dc:type>inproceedings</dc:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Tornil2004">
+    <dc:title>Use of Force Feedback Pointing Devices for Blind Users</dc:title>
+    <dc:creator>Bertrand Tornil and Nadine Baptiste-Jessel</dc:creator>
+    <dc:date>2004</dc:date>
+    <dc:source>8th ERCIM Workshop "User Interfaces For All", Wien, Austria</dc:source>
+    <dc:description>In this paper, we discuss the possible uses, for a blind user, of force feedback pointing devices, such as the mouse Wingman Force Feedback Mouse and the   PHANTOM , associated with a sound feedback. We set the definitions of the gesture interaction and propose the interaction loop relative to these devices. Related works enable us to raise the limit of their use and thus to specify within which framework they are adapted: the relative localization of elements compared to the others. The applications that we are developing are based on this context of use. We present our application of geography which indicates the relative positions of the areas on a map, via a force feedback mouse and a voice synthesis. Lastly, we present the prototype of our three-dimensional application which accounts for the relative position of the human body elements. In order to automate the treatment as much as possible, we based our applications on data files in XML: the SVG for the geographical maps and the X3D will be retained for the format of the forms in 3D.</dc:description>
+    <dc:identifier rdf:resource="http://bobuss.free.fr/pro/maBiblio/ui4all2004/ui4all2004.html"/>
+    <dc:type>inproceedings</dc:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Tornil2004a">
+    <dc:title>Accessibilité à l'harmonie grâce à une souris à retour de force et une notation spatiale</dc:title>
+    <dc:creator>Bertrand Tornil</dc:creator>
+    <dc:date>2004</dc:date>
+    <dc:source>Rencontre Jeune Chercheurs en Interaction Homme-Machine'04, Lacanau</dc:source>
+    <dc:description>Cet article décrit une méthode qui facilite l'accès des utilisateurs non-voyants à l'information musicale harmonique, à l'aide d'une représentation spatiale de la musique et d'une souris à retour de force. Nous proposons tout d'abord un contexte d'utilisation de la souris à retour de force : la localisation relative. Cette dernière permet la reconstruction progressive de l'image mentale que l'on se fait d'un document en prenant conscience des positions de ses éléments. Nous présentons ensuite le contexte technique qui sous-tend notre prototype, ainsi que les diverses alternatives possibles. Nous décrivons alors le prototype de notre application musicale et nous terminons en présentant les axes de recherche que nous envisageons pour le futur : autres domaines d'application (géographie, géométrie) et contexte d'utilisation enseignant-élève.</dc:description>
+    <dc:identifier rdf:resource="http://bobuss.free.fr/pro/maBiblio/rjc-ihm04/rjc-ihm04.html"/>
+    <dc:type>inproceedings</dc:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Tornil2005">
+    <dc:title>Music Haptic : Musical Harmony Notions for All with a Force Feedback Mouse and a Spatial Representation</dc:title>
+    <dc:creator>Bertrand Tornil and Nadine Baptiste-Jessel</dc:creator>
+    <dc:date>2005</dc:date>
+    <dc:source>International Computer Music Conference, Barcelona, Spain</dc:source>
+    <dc:description>This paper describes Music Haptic, an application which enables users (especially blind users) to train of musical harmony notions due to a spatial representation and a force feedback mouse. This mouse enables the progressive rebuilding of the mental image of a graphical document through knowing the positions of its elements. We present technical context of our prototype and the possible alternatives. Then, we describe our prototype and discuss directions for future research.</dc:description>
+    <dc:identifier rdf:resource="http://bobuss.free.fr/pro/maBiblio/icmc2005/icmc2005.html"/>
+    <dc:type>inproceedings</dc:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Tornil2005a">
+    <dc:title>Retour de Force et Performances lors d'une tâache de pointage</dc:title>
+    <dc:creator>Bertrand Tornil and Nadine Baptiste-Jessel</dc:creator>
+    <dc:date>2005</dc:date>
+    <dc:source>17ème Conférence Francophone sur l'Interaction Homme-Machine, Toulouse</dc:source>
+    <dc:description>Cet article présente une étude réalisée lors d'une tâche de pointage à l'aide d'une souris à retour de force. Par rapport à une tâche de pointage sans retour de force, et conformément aux études déjà réalisées sur le sujet et dans les mêmes conditions, nous n'avons pas observé une amélioration significative des performances lorsque la cible seule est liée à un retour de force. De plus, lorsque d'autres champs de force sont situés entre la cible et la position initiale du geste (cas applicable à un bureau haptiquement augmenté), les performances avec retour de force s'amoindrissent de 23,6%. Nous proposons un retour de force dynamique, où l'intensité de la force se réduit quand la vitesse de la souris augmente. Les performances sont alors toujours moins bonnes que sans retour de force, mais plus que de 15,6%.</dc:description>
+    <dc:identifier rdf:resource="http://bobuss.free.fr/pro/maBiblio/ihm2005/ihm2005.html"/>
+    <dc:type>inproceedings</dc:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="#Tornil2005b">
+    <dc:title>Force Feedback and Performances in a Point-and-Click Task</dc:title>
+    <dc:creator>Bertrand Tornil and Nadine Baptiste-Jessel</dc:creator>
+    <dc:date>2005</dc:date>
+    <dc:source>7th International Conference on Multimodal Interfaces, Trento, Italy</dc:source>
+    <dc:description>This article present a survey about a point-and-click task. This task was done with a force feedback mouse. Compared with a point-and-click task without force feedback, we have not observed a significant reduction of the performance when the target got a force feedback. However, when some other force fields are between the target and the movement origin, (haptic desktop for instance), performances decrease about 23,6%. We propose a dynamic force feedback, where the force intensity decreases when the mouse speed raises up. Performances are again worse than without force feedback, but only about 15,6%.</dc:description>
+    <dc:identifier rdf:resource="http://bobuss.free.fr/pro/maBiblio/icmi2005/icmi2005.html"/>
+    <dc:type>inproceedings</dc:type>
+  </rdf:Description>
+</rdf:RDF>
